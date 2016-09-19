@@ -1,3 +1,4 @@
+/*MISC ESSENTIALS*/
 * {
     margin: 0;
     padding: 0;
@@ -19,20 +20,25 @@ body, html{
     -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
-.pageContainer{
+
+/*HOMEPAGE*/
+.homePage{
+    overflow: hidden;
+}
+.jokeContainer{
+    transition-duration: 1s;
     height: 100vh;
 }
-
 .container {
     height: 100vh;
     width: 100%;
     overflow: hidden;
 }
 
-.uploadContainer{
-    height: 0;
-}
+
+/*TITLE*/
 .title {
+    transition-duration:  1s;
     font-family: "Myanmar MN", Avenir;
     font-size: 60pt;
     text-align: center;
@@ -48,10 +54,11 @@ body, html{
     position: absolute;
 }
 
+
+/*JOKE*/
 .joke {
-
+    transition: margin 0s;
 }
-
 .jokeContent {
     font-family: "Myanmar MN", Avenir;
     font-size: 53pt;
@@ -72,6 +79,33 @@ body, html{
     margin-top: 30px;
     transition: 0.5s;
 }
+
+.downImageContainer {
+    transition-duration: 1s;
+    text-align: center;
+    vertical-align: text-bottom;
+    margin-top: -220px;
+}
+
+
+/*DOWNIMAGE*/
+.downImage {
+    transition-duration: 1s;
+    transform: rotate(180deg);
+    width: 200px;
+    z-index: -100;
+}
+
+
+/*UPLOAD CONTAINER*/
+.uploadContainer{
+    transition-duration: 1s;
+    height: 0;
+
+}
+
+
+
 /*.jokeLikes {*/
     /*font-family: "Myanmar MN", Avenir;*/
     /*font-size: 30pt;*/
