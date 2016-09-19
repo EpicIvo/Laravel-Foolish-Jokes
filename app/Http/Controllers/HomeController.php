@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Joke;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function home(){
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-        $jokes = Joke::all();
-        return view('home', compact('jokes'));
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
     }
 }

@@ -5,14 +5,13 @@
 }
 body, html{
     overflow-x: hidden;
-    overflow-y; hidden;
+    overflow-y: hidden;
     -webkit-user-select: none;
-    -o-user-select: none;
     user-select: none;
 }
 ::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 0px;
+    width: 0;
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 4px;
@@ -39,7 +38,7 @@ body, html{
 /*TITLE*/
 .title {
     transition-duration:  1s;
-    font-family: "Myanmar MN", Avenir;
+    font-family: "Myanmar MN", Avenir, sans-serif;
     font-size: 60pt;
     text-align: center;
     color: #999999;
@@ -47,7 +46,7 @@ body, html{
     vertical-align: bottom;
 }
 .betaText{
-    font-family: Avenir;
+    font-family: Avenir, sans-serif;
     font-size: 20pt;
     color: #888888;
     display: inline-block;
@@ -60,7 +59,7 @@ body, html{
     transition: margin 0s;
 }
 .jokeContent {
-    font-family: "Myanmar MN", Avenir;
+    font-family: "Myanmar MN", Avenir, sans-serif;
     font-size: 53pt;
     padding-left: 10%;
     padding-right: 10%;
@@ -71,7 +70,7 @@ body, html{
 }
 
 .jokeAuthor {
-    font-family: "Myanmar MN", Avenir;
+    font-family: "Myanmar MN", Avenir, sans-serif;
     font-size: 30pt;
     text-align: center;
     color: #999999;
@@ -84,7 +83,7 @@ body, html{
     transition-duration: 1s;
     text-align: center;
     vertical-align: text-bottom;
-    margin-top: -220px;
+    margin-top: -180px;
 }
 
 
@@ -92,10 +91,12 @@ body, html{
 .downImage {
     transition-duration: 1s;
     transform: rotate(180deg);
-    width: 200px;
+    width: 150px;
     z-index: -100;
 }
-
+.downImage:hover{
+    cursor:pointer;
+}
 
 /*UPLOAD CONTAINER*/
 .uploadContainer{
@@ -104,8 +105,31 @@ body, html{
 
 }
 
+/*Buttons*/
+a{
+    color: #EEEEEE;
+    text-decoration: none;
+}
+.buttonsContainer{
+    margin-right: 35%;
+    margin-left: 35%;
+    margin-top: 25vh;
+}
 
+.button{
+    width: 300px;
+    font-family: "Myanmar MN", Avenir, sans-serif;
+    font-size: 50pt;
+    text-align: center;
+    background-color: #133d55;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 40px;
+}
 
+.button:hover{
+    cursor: pointer;
+}
 /*.jokeLikes {*/
     /*font-family: "Myanmar MN", Avenir;*/
     /*font-size: 30pt;*/

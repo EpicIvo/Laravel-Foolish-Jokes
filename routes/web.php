@@ -10,5 +10,13 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+use App\Joke;
 
-Route::get('/', 'HomeController@home');
+Route::get('/', function () {
+    $jokes = Joke::all();
+    return view('welcome', compact('jokes'));
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

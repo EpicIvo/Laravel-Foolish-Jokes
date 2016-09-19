@@ -490,25 +490,33 @@
     },
     {
         "name": "psr/log",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/php-fig/log.git",
-            "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+            "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
-            "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
+            "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
             "shasum": ""
         },
-        "time": "2012-12-21 11:40:51",
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-09-19 16:02:08",
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "Psr\\Log\\": ""
+            "psr-4": {
+                "Psr\\Log\\": "Psr/Log/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -522,6 +530,7 @@
             }
         ],
         "description": "Common interface for logging libraries",
+        "homepage": "https://github.com/php-fig/log",
         "keywords": [
             "log",
             "psr",
@@ -1099,17 +1108,17 @@
     },
     {
         "name": "nikic/php-parser",
-        "version": "v2.1.0",
-        "version_normalized": "2.1.0.0",
+        "version": "v2.1.1",
+        "version_normalized": "2.1.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nikic/PHP-Parser.git",
-            "reference": "47b254ea51f1d6d5dc04b9b299e88346bf2369e3"
+            "reference": "4dd659edadffdc2143e4753df655d866dbfeedf0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/47b254ea51f1d6d5dc04b9b299e88346bf2369e3",
-            "reference": "47b254ea51f1d6d5dc04b9b299e88346bf2369e3",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4dd659edadffdc2143e4753df655d866dbfeedf0",
+            "reference": "4dd659edadffdc2143e4753df655d866dbfeedf0",
             "shasum": ""
         },
         "require": {
@@ -1119,7 +1128,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2016-04-19 13:41:41",
+        "time": "2016-09-16 12:04:44",
         "bin": [
             "bin/php-parse"
         ],
@@ -1783,17 +1792,17 @@
     },
     {
         "name": "laravel/framework",
-        "version": "v5.3.6",
-        "version_normalized": "5.3.6.0",
+        "version": "v5.3.9",
+        "version_normalized": "5.3.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "c63a7fb7066fea2bce91ace5c830c01d503abe6c"
+            "reference": "f6fbb481672f8dc4bc6882d5d654bbfa3588c8ec"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/c63a7fb7066fea2bce91ace5c830c01d503abe6c",
-            "reference": "c63a7fb7066fea2bce91ace5c830c01d503abe6c",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/f6fbb481672f8dc4bc6882d5d654bbfa3588c8ec",
+            "reference": "f6fbb481672f8dc4bc6882d5d654bbfa3588c8ec",
             "shasum": ""
         },
         "require": {
@@ -1876,7 +1885,7 @@
             "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (3.1.*).",
             "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
         },
-        "time": "2016-09-01 14:06:47",
+        "time": "2016-09-12 14:08:29",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3299,17 +3308,17 @@
     },
     {
         "name": "myclabs/deep-copy",
-        "version": "1.5.2",
-        "version_normalized": "1.5.2.0",
+        "version": "1.5.4",
+        "version_normalized": "1.5.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/myclabs/DeepCopy.git",
-            "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc"
+            "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/da8529775f14f4fdae33f916eb0cf65f6afbddbc",
-            "reference": "da8529775f14f4fdae33f916eb0cf65f6afbddbc",
+            "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/ea74994a3dc7f8d2f65a06009348f2d63c81e61f",
+            "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f",
             "shasum": ""
         },
         "require": {
@@ -3319,7 +3328,7 @@
             "doctrine/collections": "1.*",
             "phpunit/phpunit": "~4.1"
         },
-        "time": "2016-09-06 16:07:05",
+        "time": "2016-09-16 13:37:59",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3533,182 +3542,5 @@
         ],
         "description": "Symfony DomCrawler Component",
         "homepage": "https://symfony.com"
-    },
-    {
-        "name": "symfony/class-loader",
-        "version": "v3.1.4",
-        "version_normalized": "3.1.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/class-loader.git",
-            "reference": "2d0ba77c46ecc96a6641009a98f72632216811ba"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/class-loader/zipball/2d0ba77c46ecc96a6641009a98f72632216811ba",
-            "reference": "2d0ba77c46ecc96a6641009a98f72632216811ba",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "require-dev": {
-            "symfony/finder": "~2.8|~3.0",
-            "symfony/polyfill-apcu": "~1.1"
-        },
-        "suggest": {
-            "symfony/polyfill-apcu": "For using ApcClassLoader on HHVM"
-        },
-        "time": "2016-08-23 13:39:15",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\ClassLoader\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony ClassLoader Component",
-        "homepage": "https://symfony.com"
-    },
-    {
-        "name": "barryvdh/reflection-docblock",
-        "version": "v2.0.4",
-        "version_normalized": "2.0.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/barryvdh/ReflectionDocBlock.git",
-            "reference": "3dcbd98b5d9384a5357266efba8fd29884458e5c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/barryvdh/ReflectionDocBlock/zipball/3dcbd98b5d9384a5357266efba8fd29884458e5c",
-            "reference": "3dcbd98b5d9384a5357266efba8fd29884458e5c",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0,<4.5"
-        },
-        "suggest": {
-            "dflydev/markdown": "~1.0",
-            "erusev/parsedown": "~1.0"
-        },
-        "time": "2016-06-13 19:28:20",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Barryvdh": [
-                    "src/"
-                ]
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Mike van Riel",
-                "email": "mike.vanriel@naenius.com"
-            }
-        ]
-    },
-    {
-        "name": "barryvdh/laravel-ide-helper",
-        "version": "v2.2.1",
-        "version_normalized": "2.2.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-            "reference": "28af7cd19ca41cc0c63dd1de2b46c2b84d31c463"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/28af7cd19ca41cc0c63dd1de2b46c2b84d31c463",
-            "reference": "28af7cd19ca41cc0c63dd1de2b46c2b84d31c463",
-            "shasum": ""
-        },
-        "require": {
-            "barryvdh/reflection-docblock": "^2.0.4",
-            "illuminate/console": "^5.0,<5.4",
-            "illuminate/filesystem": "^5.0,<5.4",
-            "illuminate/support": "^5.0,<5.4",
-            "php": ">=5.4.0",
-            "symfony/class-loader": "^2.3|^3.0"
-        },
-        "require-dev": {
-            "doctrine/dbal": "~2.3",
-            "phpunit/phpunit": "4.*",
-            "scrutinizer/ocular": "~1.1",
-            "squizlabs/php_codesniffer": "~2.3"
-        },
-        "suggest": {
-            "doctrine/dbal": "Load information from the database about models for phpdocs (~2.3)"
-        },
-        "time": "2016-07-04 11:52:48",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Barryvdh\\LaravelIdeHelper\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Barry vd. Heuvel",
-                "email": "barryvdh@gmail.com"
-            }
-        ],
-        "description": "Laravel IDE Helper, generates correct PHPDocs for all Facade classes, to improve auto-completion.",
-        "keywords": [
-            "autocomplete",
-            "codeintel",
-            "helper",
-            "ide",
-            "laravel",
-            "netbeans",
-            "phpdoc",
-            "phpstorm",
-            "sublime"
-        ]
     }
 ]

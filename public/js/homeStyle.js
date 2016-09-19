@@ -42,7 +42,7 @@ function openMenu(){
     uploadContainer.style.height = '100vh';
     title.style.marginTop = "-400px";
     joke.style.marginTop = "-300px";
-    downImageContainer.style.marginTop = "-1000px";
+    downImageContainer.style.marginTop = "-720px";
     downImage.style.transform = "rotate(360deg)";
 
     downImage.removeEventListener('click', openMenu);
@@ -57,7 +57,7 @@ function backHome() {
     uploadContainer.style.height = '0';
     title.style.marginTop = "0";
     joke.style.marginTop = "0";
-    downImageContainer.style.marginTop = "-220px";
+    downImageContainer.style.marginTop = "-180px";
     downImage.style.transform = "rotate(180deg)";
     calcMargin();
 
