@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body, html{
+    overflow-x: hidden;
+    overflow-y; hidden;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+.pageContainer{
+    height: 100vh;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.uploadContainer{
+    height: 0;
+}
+.title {
+    font-family: "Myanmar MN", Avenir;
+    font-size: 60pt;
+    text-align: center;
+    color: #999999;
+    border-bottom: 2px solid #E6E7E8;
+    vertical-align: bottom;
+}
+.betaText{
+    font-family: Avenir;
+    font-size: 20pt;
+    color: #888888;
+    display: inline-block;
+    position: absolute;
+}
+
+.joke {
+
+}
+
+.jokeContent {
+    font-family: "Myanmar MN", Avenir;
+    font-size: 53pt;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 0;
+    text-align: center;
+    transition: 0.5s;
+    z-index: 100;
+}
+
+.jokeAuthor {
+    font-family: "Myanmar MN", Avenir;
+    font-size: 30pt;
+    text-align: center;
+    color: #999999;
+    z-index: 100;
+    margin-top: 30px;
+    transition: 0.5s;
+}
+/*.jokeLikes {*/
+    /*font-family: "Myanmar MN", Avenir;*/
+    /*font-size: 30pt;*/
+    /*text-align: right;*/
+    /*float: right;*/
+    /*margin-right: 30%;*/
+    /*margin-left: -30%;*/
+    /*color: #888888;*/
+    /*z-index: 100;*/
+    /*display: inline-block;*/
+    /*transition: 0.5s;*/
+
+/*}*/
+
+/*.likeImageContainer{*/
+    /*text-align: center;*/
+    /*margin-left: -100px;*/
+    /*overflow: hidden;*/
+/*}*/
+/*.likeImage{*/
+    /*width: 100px;*/
+    /*position: absolute;*/
+    /*z-index: -1;*/
+    /*transform: scale(0);*/
+    /*opacity: 1;*/
+    /*-webkit-transition: transform 2s, opacity 2s;*/
+    /*transition: transform 2s, opacity 2s;*/
+/*}*/

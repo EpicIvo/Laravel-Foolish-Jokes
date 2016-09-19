@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', 'WelcomeController@home');
+Route::get('/', 'HomeController@home');
