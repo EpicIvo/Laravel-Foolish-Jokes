@@ -12,10 +12,7 @@
 */
 use App\Joke;
 
-Route::get('/', function () {
-    $jokes = Joke::all();
-    return view('welcome', compact('jokes'));
-});
+Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
 

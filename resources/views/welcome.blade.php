@@ -18,10 +18,10 @@
 
                 <div id="joke" class="joke">
                     <div class="jokeContent">
-                        {{ $jokes[0]->content }}
+                        {{ $users[0]->jokes[0]->content }}
                     </div>
                     <div class="jokeAuthor">
-                        {{ $jokes[0]->author }}
+                        {{ $users[0]->name }}
                     </div>
 
                 </div>
