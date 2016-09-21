@@ -1,19 +1,81 @@
-/* Jokes Table */
-.jokesTable{
+a:hover{
+    text-decoration: none;
 }
-.jokeInfo{
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+
+/* Account page */
+.jokesTable {
 }
-.jokeInfo:hover{
+
+.jokeInfo {
+
+}
+
+.jokeInfo:hover {
     cursor: pointer;
 }
 
-.content{
+.content {
     font-size: 16pt;
     display: inline-block;
 }
-.date{
+
+.date {
     font-size: 16pt;
     float: right;
     display: inline-block;
+}
+
+.returnToHome {
+    position: fixed;
+    margin-left: 50px;
+    margin-top: -40px;
+    font-size: 90px;
+}
+
+/* Info Page */
+.jokeinfo-info {
+
+}
+
+.content-info {
+    text-align: center;
+    font-size: 20pt;
+    color: #133d55;
+}
+
+.date-info {
+    float: right;
+}
+.buttonsContainer-info{
+    text-align: center;
+}
+.editButton-info, .deleteButton-info{
+    color: black;
+    padding: 5px;
+    border-radius: 15px;
+    width: 100px;
+}
+.individualButtonContainer-info{
+    display: inline-block;
+    font-size: 17pt;
+    margin: 40pt;
+}
+
+.editButton-info{
+    background-color: #3097D1;
+}
+.editButton-info:hover{
+    background-color: #133d55;
+    color: #ebebeb;
+    cursor: pointer;
+}
+
+
+.deleteButton-info{
+    background-color: #ac2925;
+}
+.deleteButton-info:hover{
+    background-color: #761c19;
+    color: #ebebeb;
+    cursor: pointer;
 }

@@ -13,15 +13,17 @@
 
                     <div class="panel-body">
                         <div class="jokeTable">
-                            @for($i = 0; $i < count($users[0]->jokes); $i++)
+                            @for($i = 0; $i < count($users[Auth::user()->id - 1]->jokes); $i++)
+                                <a href={{"/info/".$i}}>
                                 <div class="jokeInfo">
                                     <div class="content">
-                                        {{ $users[0]->jokes[$i]->content }}
+                                        {{ $users[Auth::user()->id - 1]->jokes[$i]->content }}
                                     </div>
                                     <div class="date">
-                                        {{ $users[0]->jokes[$i]->created_at }}
+                                        {{ $users[Auth::user()->id - 1]->jokes[$i]->created_at }}
                                     </div>
                                 </div>
+                                </a>
                             @endfor
                         </div>
                     </div>

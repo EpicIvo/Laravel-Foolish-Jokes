@@ -57,7 +57,7 @@ function backHome() {
     uploadContainer.style.height = '0';
     title.style.marginTop = "0";
     joke.style.marginTop = "0";
-    downImageContainer.style.marginTop = "-180px";
+    downImageContainer.style.marginTop = "-110px";
     downImage.style.transform = "rotate(180deg)";
     calcMargin();
 

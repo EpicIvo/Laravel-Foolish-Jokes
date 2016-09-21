@@ -17,3 +17,8 @@ Route::get('/', 'WelcomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/info/{jokeId}', 'HomeController@jokeInfo');
+
+Route::get('/edit/{jokeId}', 'HomeController@editJoke');
+Route::get('/delete/{jokeId}', 'HomeController@deleteJoke');
