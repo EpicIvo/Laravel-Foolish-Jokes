@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Joke;
+use App\User;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -24,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jokes = Joke::all();
-        return view('home', compact('jokes'));
+        $users = User::all();
+        return view('home', compact('users'));
     }
 }

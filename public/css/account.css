@@ -1,0 +1,19 @@
+/* Jokes Table */
+.jokesTable{
+}
+.jokeInfo{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.jokeInfo:hover{
+    cursor: pointer;
+}
+
+.content{
+    font-size: 16pt;
+    display: inline-block;
+}
+.date{
+    font-size: 16pt;
+    float: right;
+    display: inline-block;
+}
