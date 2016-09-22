@@ -18,10 +18,14 @@
 
                 <div id="joke" class="joke">
                     <div class="jokeContent">
-                        {{ $users[0]->jokes[0]->content }}
+                        @for ($j = 0; $j < count($users); $j++)
+                            @for($k = 0; $k < count($users[$j]->jokes); $k++)
+                                {{ $users[$j]->jokes[$k]->content }}
+                            @endfor
+                        @endfor
                     </div>
                     <div class="jokeAuthor">
-                        {{ $users[0]->name }}
+                        {{--{{ $users[0]->name }}--}}
                     </div>
 
                 </div>
