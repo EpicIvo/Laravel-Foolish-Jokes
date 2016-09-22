@@ -22,12 +22,11 @@
                             @for($k = 0; $k < count($users[$j]->jokes); $k++)
                                 {{ $users[$j]->jokes[$k]->content }}
                             @endfor
+                            </div>
+                                <div class="jokeAuthor">
+                                {{$users[$j]->name}}
+                            </div>
                         @endfor
-                    </div>
-                    <div class="jokeAuthor">
-                        {{--{{ $users[0]->name }}--}}
-                    </div>
-
                 </div>
 
             </div>
