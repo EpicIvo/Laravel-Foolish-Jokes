@@ -80,15 +80,14 @@ body, html{
     transition: 0.5s;
 }
 
+
+/*DOWNIMAGE*/
 .downImageContainer {
     transition-duration: 1s;
     text-align: center;
     vertical-align: text-bottom;
     margin-top: -110px;
 }
-
-
-/*DOWNIMAGE*/
 .downImage {
     transition-duration: 1s;
     transform: rotate(180deg);

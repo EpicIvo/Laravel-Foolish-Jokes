@@ -68,6 +68,7 @@ class ComposerStaticInitc9ead62e7aee3ea75fcc4b7136e3d9c3
         'L' => 
         array (
             'League\\Flysystem\\' => 17,
+            'Laracasts\\Utilities\\JavaScript\\' => 31,
         ),
         'I' => 
         array (
@@ -200,6 +201,10 @@ class ComposerStaticInitc9ead62e7aee3ea75fcc4b7136e3d9c3
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
+        ),
+        'Laracasts\\Utilities\\JavaScript\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laracasts/utilities/src',
         ),
         'Illuminate\\' => 
         array (

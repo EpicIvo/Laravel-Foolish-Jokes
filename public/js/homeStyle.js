@@ -1,11 +1,3 @@
-// Misc Essentials
-window.addEventListener('load', init);
-
-function init() {
-    console.log('init');
-    calcMargin();
-}
-
 function divideHeight(div, n) {
     return document.getElementById(div).clientHeight / n;
 }
