@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Redirect;
+use Carbon\Carbon;
 use App\User;
+use App\Joke;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 
 class HomeController extends Controller
@@ -29,6 +33,11 @@ class HomeController extends Controller
         return view('account/home', compact('users'));
     }
 
+    public function newJoke()
+    {
+        return view('account/new');
+    }
+
     public function jokeInfo($jokeId)
     {
         $users = User::all();
@@ -45,5 +54,18 @@ class HomeController extends Controller
     {
         $users = User::all();
         return view('account/home', compact('users'));
+    }
+
+    public function create(){
+
+        $time = Carbon::now();
+        $joke = new Joke;
+
+        $joke->user_id = Input::get('userId');
+        $joke->content = Input::get('jokeContent');
+        $joke->created_at = $time->toDateTimeString();
+        $joke->save();
+
+        return Redirect::action('HomeController@index');
     }
 }

@@ -5,6 +5,13 @@
 @endsection
 
 @section('content')
+
+    <a href="{{ URL::to('new') }}">
+        <div class="newJokeButton">
+            New Joke
+        </div>
+    </a>
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -15,14 +22,14 @@
                         <div class="jokeTable">
                             @for($i = 0; $i < count($users[Auth::user()->id - 1]->jokes); $i++)
                                 <a href={{"/info/".$i}}>
-                                <div class="jokeInfo">
-                                    <div class="content">
-                                        {{ $users[Auth::user()->id - 1]->jokes[$i]->content }}
+                                    <div class="jokeInfo">
+                                        <div class="content">
+                                            {{ $users[Auth::user()->id - 1]->jokes[$i]->content }}
+                                        </div>
+                                        <div class="date">
+                                            {{ $users[Auth::user()->id - 1]->jokes[$i]->created_at }}
+                                        </div>
                                     </div>
-                                    <div class="date">
-                                        {{ $users[Auth::user()->id - 1]->jokes[$i]->created_at }}
-                                    </div>
-                                </div>
                                 </a>
                             @endfor
                         </div>

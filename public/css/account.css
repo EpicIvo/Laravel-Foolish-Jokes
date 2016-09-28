@@ -1,4 +1,4 @@
-a:hover{
+a:hover {
     text-decoration: none;
 }
 
@@ -8,6 +8,39 @@ a:hover{
 
 .jokeInfo {
 
+}
+
+.newJokeButton {
+    transition-duration: 0.5s;
+    text-align: center;
+    background-color: #133d55;
+    color: #f9f9f9;
+    width: 58.5%;
+    padding: 10px;
+    font-size: 40pt;
+    border: 3px solid #eea236;
+    border-radius: 5px;
+    margin: 30px auto;
+}
+
+.newJokeButton:hover {
+    border: 3px solid #985f0d;
+    background-color: #245269;
+}
+
+.formSubmit {
+    transition-duration: .5s;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 2px solid #761c19;
+    background-color: #133d55;
+    color: #f9f2f4;
+}
+
+.formSubmit:hover {
+
+    border: 2px solid #ec971f;
+    background-color: #2ca02c;
 }
 
 .jokeInfo:hover {
@@ -46,35 +79,39 @@ a:hover{
 .date-info {
     float: right;
 }
-.buttonsContainer-info{
+
+.buttonsContainer-info {
     text-align: center;
 }
-.editButton-info, .deleteButton-info{
+
+.editButton-info, .deleteButton-info {
     color: black;
     padding: 5px;
     border-radius: 15px;
     width: 100px;
 }
-.individualButtonContainer-info{
+
+.individualButtonContainer-info {
     display: inline-block;
     font-size: 17pt;
     margin: 40pt;
 }
 
-.editButton-info{
+.editButton-info {
     background-color: #3097D1;
 }
-.editButton-info:hover{
+
+.editButton-info:hover {
     background-color: #133d55;
     color: #ebebeb;
     cursor: pointer;
 }
 
-
-.deleteButton-info{
+.deleteButton-info {
     background-color: #ac2925;
 }
-.deleteButton-info:hover{
+
+.deleteButton-info:hover {
     background-color: #761c19;
     color: #ebebeb;
     cursor: pointer;
