@@ -53,7 +53,7 @@
         }
         //Misc
         var jokeNumber = 0;
-        var jokeContainer = document.getElementById('jokeContainer');
+
         //JSON
         var jokeData = {!! json_encode($jokes->toArray()) !!};
         var usersData = {!! json_encode($users->toArray()) !!};
@@ -63,9 +63,6 @@
         //Logging the data
         console.log(jokeData);
         console.log(usersData);
-
-        //Container to click on
-        var container = document.getElementById('jokeContainer');
 
         //divs in the joke
         var jokeContent = document.createElement('div');
@@ -96,15 +93,13 @@
             calcMargin();
         }
 
-        jokeContainer.addEventListener('click', clickDetected)
+        joke.addEventListener('click', clickDetected);
 
         function clickDetected() {
-
+            joke.removeEventListener('click', clickDetected);
             jokeNumber += 1;
-
-            jokeContent.style.transform = 'scale(1.2)';
+            jokeContent.style.transform = 'scale(1.5)';
             setTimeout(jokeSmallAnimation, 700);
-
         }
         function jokeSmallAnimation() {
             jokeContent.style.transform = 'scale(0)';
@@ -115,6 +110,7 @@
             processData();
             jokeContent.style.transform = 'scale(1)';
             jokeAuthor.style.transform = 'scale(1)';
+            joke.addEventListener('click', clickDetected);
         }
 
     </script>

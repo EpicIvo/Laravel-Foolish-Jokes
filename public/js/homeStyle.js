@@ -27,7 +27,6 @@ downImage.addEventListener('click', openMenu);
 
 // Open the menu after a click
 function openMenu(){
-
     joke.style.transition = "margin 1s";
 
     jokeContainer.style.height = '0';
@@ -55,5 +54,4 @@ function backHome() {
 
     downImage.removeEventListener('click', backHome);
     downImage.addEventListener('click', openMenu);
-
 }
