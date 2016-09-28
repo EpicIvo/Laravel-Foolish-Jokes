@@ -53,11 +53,17 @@
         }
         //Misc
         var jokeNumber = 0;
+        var jokeContainer = document.getElementById('jokeContainer');
+        //JSON
         var jokeData = {!! json_encode($jokes->toArray()) !!};
         var usersData = {!! json_encode($users->toArray()) !!};
+        // -1 because db starts at 1 and array at 0
+        var userId = jokeData[jokeNumber].user_id - 1;
 
+        //Logging the data
         console.log(jokeData);
         console.log(usersData);
+
         //Container to click on
         var container = document.getElementById('jokeContainer');
 
@@ -76,19 +82,39 @@
 
             jokeAuthor.setAttribute('id', 'jokeAuthor');
             jokeAuthor.setAttribute('class', 'jokeAuthor');
-            var userId = jokeData[jokeNumber].user_id - 1;
             jokeAuthor.innerHTML = usersData[userId].name;
 
             {{--jokeLikes.setAttribute('id', 'jokeLikes');--}}
             {{--jokeLikes.setAttribute('class', 'jokeLikes');--}}
-            {{--jokeLikes.innerHTML ={{}};--}}
+            {{--jokeLikes.innerHTML ={!!  !!};--}}
 
             joke.appendChild(jokeContent);
             joke.appendChild(jokeAuthor);
-//            joke.appendChild(jokeLikes);
+            {{--joke.appendChild(jokeLikes);--}}
 
             //calc margin
             calcMargin();
+        }
+
+        jokeContainer.addEventListener('click', clickDetected)
+
+        function clickDetected() {
+
+            jokeNumber += 1;
+
+            jokeContent.style.transform = 'scale(1.2)';
+            setTimeout(jokeSmallAnimation, 700);
+
+        }
+        function jokeSmallAnimation() {
+            jokeContent.style.transform = 'scale(0)';
+            jokeAuthor.style.transform = 'scale(0)';
+            setTimeout(jokeBigAnimation, 700);
+        }
+        function jokeBigAnimation() {
+            processData();
+            jokeContent.style.transform = 'scale(1)';
+            jokeAuthor.style.transform = 'scale(1)';
         }
 
     </script>
