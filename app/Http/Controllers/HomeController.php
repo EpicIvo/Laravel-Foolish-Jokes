@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Joke;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -27,24 +26,24 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('home', compact('users'));
+        return view('account/home', compact('users'));
     }
 
     public function jokeInfo($jokeId)
     {
         $users = User::all();
-        return view('info', compact('users'), compact('jokeId'));
+        return view('account/info', compact('users'), compact('jokeId'));
     }
 
     public function editJoke()
     {
         $users = User::all();
-        return view('home', compact('users'));
+        return view('account/home', compact('users'));
     }
 
     public function deleteJoke()
     {
         $users = User::all();
-        return view('home', compact('users'));
+        return view('account/home', compact('users'));
     }
 }
