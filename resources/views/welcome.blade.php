@@ -1,5 +1,3 @@
-{{--{{$users}} <br><br>--}}
-{{--{{$users[0]->jokes}}--}}
 @extends('layout')
 @section('header')
 
@@ -20,10 +18,6 @@
                 </div>
 
                 <div id="joke" class="joke">
-                    {{--<div class="jokeContent">--}}
-                    {{--</div>--}}
-                    {{--<div class="jokeAuthor">--}}
-                    {{--</div>--}}
                 </div>
 
             </div>
@@ -50,32 +44,40 @@
 
         </div>
     </div>
+    {{-- JAVASCRIPT --}}
     <script type="text/javascript">
         window.addEventListener('load', init);
 
         function init() {
             processData();
         }
+        //Misc
+        var jokeNumber = 0;
+        var jokeData = {!! json_encode($jokes->toArray()) !!};
+        var usersData = {!! json_encode($users->toArray()) !!};
+
+        console.log(jokeData);
+        console.log(usersData);
         //Container to click on
         var container = document.getElementById('jokeContainer');
 
         //divs in the joke
         var jokeContent = document.createElement('div');
         var jokeAuthor = document.createElement('div');
-        var jokeLikes = document.createElement('div');
+        //var jokeLikes = document.createElement('div');
         var joke = document.getElementById('joke');
 
-        function processData(data) {
-            console.log(data);
-            jokeData = data;
+
+        function processData() {
 
             jokeContent.setAttribute('id', 'jokeContent');
             jokeContent.setAttribute('class', 'jokeContent');
-            jokeContent.innerHTML = '{{$users[0]->jokes[0]->content}}';
+            jokeContent.innerHTML = jokeData[jokeNumber].content;
 
             jokeAuthor.setAttribute('id', 'jokeAuthor');
             jokeAuthor.setAttribute('class', 'jokeAuthor');
-            jokeAuthor.innerHTML = '{{$users[0]->name}}';
+            var userId = jokeData[jokeNumber].user_id - 1;
+            jokeAuthor.innerHTML = usersData[userId].name;
 
             {{--jokeLikes.setAttribute('id', 'jokeLikes');--}}
             {{--jokeLikes.setAttribute('class', 'jokeLikes');--}}
