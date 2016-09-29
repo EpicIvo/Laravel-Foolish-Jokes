@@ -58,7 +58,6 @@
         var jokeData = {!! json_encode($jokes->toArray()) !!};
         var usersData = {!! json_encode($users->toArray()) !!};
         // -1 because db starts at 1 and array at 0
-        var userId = jokeData[jokeNumber].user_id - 1;
 
         //Logging the data
         console.log(jokeData);
@@ -72,6 +71,8 @@
 
 
         function processData() {
+
+            var userId = jokeData[jokeNumber].user_id - 1;
 
             jokeContent.setAttribute('id', 'jokeContent');
             jokeContent.setAttribute('class', 'jokeContent');
