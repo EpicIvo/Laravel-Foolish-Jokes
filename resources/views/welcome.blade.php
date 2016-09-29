@@ -61,6 +61,11 @@
         }
         //Misc
         var jokeNumber = 0;
+        @if(Auth::user())
+                var loggedIn = true;
+        @else
+                var loggedIn = false;
+        @endif
 
         //JSON
         var jokeData = {!! json_encode($jokes->toArray()) !!};
@@ -106,11 +111,22 @@
 
         function clickDetected() {
             joke.removeEventListener('click', clickDetected);
-            jokeNumber += 1;
+            joke.addEventListener('click', secondClickDetected);
             jokeContent.style.transform = 'scale(1.5)';
             setTimeout(jokeSmallAnimation, 700);
         }
+        function secondClickDetected() {
+            console.log('like');
+            if (loggedIn) {
+                console.log('loggedIn')
+            } else {
+                console.log('loggedOut')
+            }
+            joke.removeEventListener('click', secondClickDetected);
+        }
         function jokeSmallAnimation() {
+            joke.removeEventListener('click', secondClickDetected);
+            jokeNumber++;
             jokeContent.style.transform = 'scale(0)';
             jokeAuthor.style.transform = 'scale(0)';
             setTimeout(jokeBigAnimation, 700);
