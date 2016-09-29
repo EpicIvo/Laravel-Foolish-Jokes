@@ -22,8 +22,13 @@ Route::get('home', [
 ]);
 
 Route::get('/info/{jokeId}', 'HomeController@jokeInfo');
+
+//New
 Route::get('/new', 'HomeController@newJoke');
-Route::get('/create', 'HomeController@create');
+Route::post('/create', 'HomeController@create');
+//Edit
+Route::get('/editJoke/{jokeId}', 'HomeController@editJoke');
+Route::put('/edit/{jokeId}', 'HomeController@edit');
 
 Route::get('/edit/{jokeId}', 'HomeController@editJoke');
 Route::get('/delete/{jokeId}', 'HomeController@deleteJoke');

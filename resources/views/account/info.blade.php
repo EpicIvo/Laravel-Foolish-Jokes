@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="buttonsContainer-info">
                                     <div class="individualButtonContainer-info">
-                                        <a href={{'/edit/'.$jokeId}}>
+                                        <a href={{'/editJoke/'.$jokeId}}>
                                             <div class="editButton-info">
                                                 Edit
                                             </div>

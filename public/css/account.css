@@ -18,14 +18,13 @@ a:hover {
     width: 58.5%;
     padding: 10px;
     font-size: 40pt;
-    border: 3px solid #eea236;
-    border-radius: 5px;
+    border-radius: 40px;
+    border: 6px inset #985f0d;
     margin: 30px auto;
 }
 
 .newJokeButton:hover {
-    border: 3px solid #985f0d;
-    background-color: #245269;
+    border-color: #eea236;
 }
 
 .formSubmit {
