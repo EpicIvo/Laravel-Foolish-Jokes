@@ -2,7 +2,7 @@
 @section('header')
 
     <title>Foolish Jokes</title>
-    <link href="{{ URL::asset('css/home.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('css/welcome.css') }}" rel="stylesheet" type="text/css">
     <link rel="icon" href="{{ URL::asset('images/FJLOGO.png') }}">
 
 @stop
@@ -28,20 +28,28 @@
 
         </div>
         <div class="uploadContainer" id="uploadContainer">
-
-            <div class="buttonsContainer">
-                <a href="{{ URL::to('login') }}">
-                    <div class="button">
-                        Login
-                    </div>
-                </a>
-                <a href="{{ URL::to('register') }}">
-                    <div class="button">
-                        Register
-                    </div>
-                </a>
-            </div>
-
+            @if(Auth::user())
+                <div class="buttonsContainer">
+                    <a href="{{ URL::to('login') }}">
+                        <div class="accountsButton">
+                            My account
+                        </div>
+                    </a>
+                </div>
+            @else
+                <div class="buttonsContainer">
+                    <a href="{{ URL::to('login') }}">
+                        <div class="button">
+                            Login
+                        </div>
+                    </a>
+                    <a href="{{ URL::to('register') }}">
+                        <div class="button">
+                            Register
+                        </div>
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
     {{-- JAVASCRIPT --}}

@@ -131,6 +131,19 @@ a{
     border-color: #eea236;
 }
 
+.accountsButton{
+    transition: background-color, 0.4s;
+    width: 400px;
+    font-family: "Myanmar MN", Avenir, sans-serif;
+    font-size: 40pt;
+    text-align: center;
+    background-color: #133d55;
+    margin: 300px auto 20px auto;
+    padding: 40px;
+    border-radius: 40px;
+    border: 6px inset #985f0d;
+}
+
 /*.jokeLikes {*/
     /*font-family: "Myanmar MN", Avenir;*/
     /*font-size: 30pt;*/
