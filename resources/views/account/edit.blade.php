@@ -14,13 +14,13 @@
 
                     <div class="panel-body">
 
-                        {!! Form::model($joke, ['url' => '/create']) !!}
-                            {{ Form::label('joke', 'Joke:') }}
-                            {{ Form::textarea('jokeContent', null, ['class' => 'form-control', 'required'] ) }}
+                        {!! Form::model($data['joke'], ['url' => '/edit/'.$data['jokeId'], 'method' => 'put']) !!}
+                        {{ Form::label('joke', 'Joke:') }}
+                        {{ Form::textarea('jokeContent', $data['users'][Auth::user()->id - 1]->jokes[$data['jokeId']]->content, ['class' => 'form-control', 'required'] ) }}
 
-                            {{ Form::hidden('userId', Auth::user()->id) }}
+                        {{ Form::hidden('userId', Auth::user()->id) }}
 
-                            {{ Form::submit('Place Joke', ['class' => 'formSubmit']) }}
+                        {{ Form::submit('Edit Joke', ['class' => 'formSubmit']) }}
                         {!! Form::close() !!}
 
                     </div>

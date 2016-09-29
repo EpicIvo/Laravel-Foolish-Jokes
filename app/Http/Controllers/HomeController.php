@@ -33,30 +33,15 @@ class HomeController extends Controller
         return view('account/home', compact('users'));
     }
 
+    //New Joke
     public function newJoke()
     {
-        return view('account/new');
+        $joke = Joke::all();
+        return view('account/new', compact('joke'));
     }
 
-    public function jokeInfo($jokeId)
+    public function create()
     {
-        $users = User::all();
-        return view('account/info', compact('users'), compact('jokeId'));
-    }
-
-    public function editJoke()
-    {
-        $users = User::all();
-        return view('account/home', compact('users'));
-    }
-
-    public function deleteJoke()
-    {
-        $users = User::all();
-        return view('account/home', compact('users'));
-    }
-
-    public function create(){
 
         $time = Carbon::now();
         $joke = new Joke;
@@ -68,4 +53,42 @@ class HomeController extends Controller
 
         return Redirect::action('HomeController@index');
     }
+
+    //Joke Info
+    public function jokeInfo($jokeId)
+    {
+        $users = User::all();
+        return view('account/info', compact('users'), compact('jokeId'));
+    }
+
+    //Edit Joke
+    public function editJoke($jokeId)
+    {
+        $data = [
+            'users' => User::all(),
+            'joke' => Joke::all(),
+            'jokeId' => $jokeId
+        ];
+        return view('account/edit', compact('data'));
+    }
+
+    public function edit($jokeId)
+    {
+
+        $time = Carbon::now();
+        $joke = Joke::find($jokeId + 1);
+        echo $joke;
+        $joke->content = Input::get('jokeContent');
+        $joke->updated_at = $time->toDateTimeString();
+        $joke->save();
+
+        return Redirect::action('HomeController@index');
+    }
+
+    public function deleteJoke()
+    {
+        $users = User::all();
+        return view('account/home', compact('users'));
+    }
+
 }
