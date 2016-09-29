@@ -16,7 +16,7 @@
 
                         {!! Form::model($data['joke'], ['url' => '/edit/'.$data['jokeId'], 'method' => 'put']) !!}
                         {{ Form::label('joke', 'Joke:') }}
-                        {{ Form::textarea('jokeContent', $data['users'][Auth::user()->id - 1]->jokes[$data['jokeId']]->content, ['class' => 'form-control', 'required'] ) }}
+                        {{ Form::textarea('jokeContent', $data['users'][Auth::user()->id - 1]->jokes[$data['jokePlace']]->content, ['class' => 'form-control', 'required'] ) }}
 
                         {{ Form::hidden('userId', Auth::user()->id) }}
 

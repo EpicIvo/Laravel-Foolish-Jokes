@@ -21,13 +21,13 @@ Route::get('home', [
     'as' => 'home', 'uses' => 'HomeController@index'
 ]);
 
-Route::get('/info/{jokeId}', 'HomeController@jokeInfo');
+Route::get('/info/{jokePlace}', 'HomeController@jokeInfo');
 
 //New
 Route::get('/new', 'HomeController@newJoke');
 Route::post('/create', 'HomeController@create');
 //Edit
-Route::get('/editJoke/{jokeId}', 'HomeController@editJoke');
+Route::get('/editJoke/{jokeId}/{jokePlace}', 'HomeController@editJoke');
 Route::put('/edit/{jokeId}', 'HomeController@edit');
 
 Route::get('/edit/{jokeId}', 'HomeController@editJoke');

@@ -55,19 +55,20 @@ class HomeController extends Controller
     }
 
     //Joke Info
-    public function jokeInfo($jokeId)
+    public function jokeInfo($jokePlace)
     {
         $users = User::all();
-        return view('account/info', compact('users'), compact('jokeId'));
+        return view('account/info', compact('users'), compact('jokePlace'));
     }
 
     //Edit Joke
-    public function editJoke($jokeId)
+    public function editJoke($jokeId, $jokePlace)
     {
         $data = [
             'users' => User::all(),
             'joke' => Joke::all(),
-            'jokeId' => $jokeId
+            'jokeId' => $jokeId,
+            'jokePlace' => $jokePlace
         ];
         return view('account/edit', compact('data'));
     }
@@ -76,13 +77,16 @@ class HomeController extends Controller
     {
 
         $time = Carbon::now();
-        $joke = Joke::find($jokeId + 1);
-        echo $joke;
-        $joke->content = Input::get('jokeContent');
-        $joke->updated_at = $time->toDateTimeString();
-        $joke->save();
+        $joke = Joke::find($jokeId);
 
-        return Redirect::action('HomeController@index');
+        if ($joke) {
+            $joke->content = Input::get('jokeContent');
+            $joke->updated_at = $time->toDateTimeString();
+            $joke->save();
+            return Redirect::action('HomeController@index');
+        }else{
+            echo "not working :'(" . $joke;
+        }
     }
 
     public function deleteJoke()
