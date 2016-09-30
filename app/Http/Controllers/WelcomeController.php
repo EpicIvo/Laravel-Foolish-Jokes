@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\jokeLike;
 use Carbon\Carbon;
 use App\Joke;
 use App\User;
@@ -12,28 +14,27 @@ class WelcomeController extends Controller
     //Index
     public function index()
     {
-        $users = User::all();
-        $jokes = Joke::all();
-        return view('welcome', compact('jokes'), compact('users'));
+        $welcomeData = [
+            'jokes' => Joke::all(),
+            'users' => User::all(),
+            'jokeLikes' => jokeLike::all()
+        ];
+        return view('welcome', compact('welcomeData'));
     }
 
     //Like
     public function like()
     {
         $data = Request::capture()->all();
-
 //        echo $data['jokeId'];
-//        echo $data['jokeLikes'];
+//        echo $data['userId'];
 
-        $time = Carbon::now();
-        $joke = Joke::find($data['jokeId']);
+        $like = new jokeLike();
+        $like->user_id = $data['userId'];
+        $like->joke_id = $data['jokeId'];
+        $like->save();
 
-        if ($joke) {
-            $joke->likes = $data['jokeLikes'];
-            $joke->updated_at = $time->toDateTimeString();
-            $joke->save();
-        } else {
-            echo "not working :'(" . $joke;
-        }
+        echo $like;
+
     }
 }

@@ -7,7 +7,7 @@ a:hover {
 }
 
 .jokeInfo {
-
+border-bottom: 1px dashed #ec971f;
 }
 
 .newJokeButton {
@@ -49,6 +49,7 @@ a:hover {
 .content {
     font-size: 16pt;
     display: inline-block;
+    width: 600px;
 }
 
 .date {
