@@ -73,25 +73,40 @@
         @endif
 
         //JSON
-        var jokeData = {!! json_encode($jokes->toArray()) !!};
-        var usersData = {!! json_encode($users->toArray()) !!};
+        var jokeData = {!! json_encode($welcomeData['jokes']->toArray()) !!};
+        var usersData = {!! json_encode($welcomeData['users']->toArray()) !!};
+        var jokeLikesNumber = {!! json_encode($welcomeData['jokeLikes']->toArray()) !!};
 
         //Logging the data
         console.log(jokeData);
         console.log(usersData);
+        console.log(jokeLikesNumber);
+
+        //Misc
+        var userId = {!!Auth::user()->id!!};
+        console.log(userId);
 
         //divs in the joke
         var jokeContent = document.createElement('div');
         var jokeAuthor = document.createElement('div');
         var jokeLikes = document.createElement('div');
+        var likeCounter = 0;
         var likeImage = document.getElementById('likeImage');
-        //var jokeLikes = document.createElement('div');
         var joke = document.getElementById('joke');
 
 
         function processData() {
 
             var userId = jokeData[jokeNumber].user_id - 1;
+
+            for (var i = 0; i < jokeLikesNumber.length; i++) {
+
+                if (jokeLikesNumber[i].joke_id === jokeData[jokeNumber].id) {
+                    likeCounter++;
+                } else {
+                }
+
+            }
 
             jokeContent.setAttribute('id', 'jokeContent');
             jokeContent.setAttribute('class', 'jokeContent');
@@ -103,7 +118,7 @@
 
             jokeLikes.setAttribute('id', 'jokeLikes');
             jokeLikes.setAttribute('class', 'jokeLikes');
-            jokeLikes.innerHTML = jokeData[jokeNumber].likes;
+            jokeLikes.innerHTML = likeCounter;
 
             joke.appendChild(jokeContent);
             joke.appendChild(jokeAuthor);
@@ -125,9 +140,9 @@
         function secondClickDetected() {
 
             console.log('secondClick');
-            jokeLikes.innerHTML = jokeData[jokeNumber].likes + 1;
 
             if (loggedIn) {
+                jokeLikes.innerHTML = likeCounter + 1;
                 likeAnimation();
                 $.ajax({
                     headers: {
@@ -136,12 +151,13 @@
                     type: "POST",
                     url: '/like',
                     dataType: 'JSON',
-                    data: {jokeId: jokeData[jokeNumber].id, jokeLikes: jokeData[jokeNumber].likes + 1},
-                    success: function( data ) {
+                    data: {jokeId: jokeData[jokeNumber].id, userId: 2 },
+                    success: function (data) {
                         console.log("ajax request succes" + data);
                     }
                 });
             } else {
+                window.location = "http://homestead.app/login";
             }
             joke.removeEventListener('click', secondClickDetected);
         }
@@ -180,7 +196,7 @@
             setTimeout(restoreListener, 1200);
         }
 
-        function restoreListener(){
+        function restoreListener() {
             joke.addEventListener('click', clickDetected);
         }
 
