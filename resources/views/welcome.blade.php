@@ -97,12 +97,15 @@
 
         function processData() {
 
+            likeCounter = 0;
+
             var userId = jokeData[jokeNumber].user_id - 1;
 
             for (var i = 0; i < jokeLikesNumber.length; i++) {
 
                 if (jokeLikesNumber[i].joke_id === jokeData[jokeNumber].id) {
                     likeCounter++;
+                    console.log(jokeLikesNumber[i].joke_id + ' ' + jokeData[jokeNumber].id);
                 } else {
                 }
 

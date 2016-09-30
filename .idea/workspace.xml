@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="45c9f204-321a-41e0-ba0b-8037ed2b9ac5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Joke.php" afterPath="$PROJECT_DIR$/app/Joke.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/account.css" afterPath="$PROJECT_DIR$/public/css/account.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/account/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/account/home.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" />
     </list>
     <ignored path="Laravel.iws" />
@@ -58,8 +53,8 @@
       <file leaf-file-name="welcome.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="156" column="21" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
+            <state relative-caret-position="333">
+              <caret line="99" column="28" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -537,12 +532,12 @@
       <workItem from="1475140268551" duration="5556000" />
       <workItem from="1475146866416" duration="2641000" />
       <workItem from="1475175194570" duration="2384000" />
-      <workItem from="1475224033566" duration="11983000" />
+      <workItem from="1475224033566" duration="12454000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90695000" />
+    <option name="totallyTimeSpent" value="91166000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -917,8 +912,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="156" column="21" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
+        <state relative-caret-position="333">
+          <caret line="99" column="28" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="28" />
           <folding />
         </state>
       </provider>
