@@ -27,6 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Index
     public function index()
     {
         $users = User::all();
@@ -89,10 +90,11 @@ class HomeController extends Controller
         }
     }
 
-    public function deleteJoke()
+    public function deleteJoke($jokeId)
     {
-        $users = User::all();
-        return view('account/home', compact('users'));
+        $joke = Joke::find($jokeId);
+        $joke->delete();
+        return Redirect::action('HomeController@index');
     }
 
 }
