@@ -17,6 +17,10 @@
                     <div class='betaText'><i>Development phase</i></div>
                 </div>
 
+                <div class="likeImageContainer" id="likeImageContainer">
+                    <img class="likeImage" id="likeImage" src="{{ URL::asset('images/graylike.png') }}"/>
+                </div>
+
                 <div id="joke" class="joke">
                 </div>
 
@@ -71,7 +75,6 @@
         //JSON
         var jokeData = {!! json_encode($jokes->toArray()) !!};
         var usersData = {!! json_encode($users->toArray()) !!};
-        // -1 because db starts at 1 and array at 0
 
         //Logging the data
         console.log(jokeData);
@@ -81,6 +84,7 @@
         var jokeContent = document.createElement('div');
         var jokeAuthor = document.createElement('div');
         var jokeLikes = document.createElement('div');
+        var likeImage = document.getElementById('likeImage');
         //var jokeLikes = document.createElement('div');
         var joke = document.getElementById('joke');
 
@@ -117,15 +121,14 @@
             jokeContent.style.transform = 'scale(1.5)';
             setTimeout(jokeSmallAnimation, 700);
         }
+
         function secondClickDetected() {
 
             console.log('secondClick');
-
             jokeLikes.innerHTML = jokeData[jokeNumber].likes + 1;
 
             if (loggedIn) {
-                console.log('loggedIn');
-
+                likeAnimation();
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -135,27 +138,49 @@
                     dataType: 'JSON',
                     data: {jokeId: jokeData[jokeNumber].id, jokeLikes: jokeData[jokeNumber].likes + 1},
                     success: function( data ) {
-                        console.log(data);
+                        console.log("ajax request succes" + data);
                     }
                 });
             } else {
-                console.log('loggedOut')
             }
             joke.removeEventListener('click', secondClickDetected);
         }
+
+        function likeAnimation() {
+            likeImage.style.transform = 'scale(40)';
+            likeImage.style.opacity = '0';
+            setTimeout(likeImageSmall, 1000);
+        }
+
+        function likeImageSmall() {
+            likeImage.style.transition = '0s';
+            likeImage.style.transform = 'scale(0)';
+            setTimeout(likeImageOpacity, 1200);
+        }
+
+        function likeImageOpacity() {
+            likeImage.style.opacity = '1';
+            likeImage.style.transition = 'transform 2s, opacity 2s';
+        }
+
         function jokeSmallAnimation() {
             joke.removeEventListener('click', secondClickDetected);
             jokeNumber++;
             jokeContent.style.transform = 'scale(0)';
             jokeAuthor.style.transform = 'scale(0)';
             jokeLikes.style.transform = 'scale(0)';
-            setTimeout(jokeBigAnimation, 700);
+            setTimeout(jokeBigAnimation, 1000);
         }
+
         function jokeBigAnimation() {
             processData();
             jokeContent.style.transform = 'scale(1)';
             jokeAuthor.style.transform = 'scale(1)';
             jokeLikes.style.transform = 'scale(1)';
+            setTimeout(restoreListener, 1200);
+        }
+
+        function restoreListener(){
             joke.addEventListener('click', clickDetected);
         }
 

@@ -18,8 +18,11 @@ function calcMargin() {
     var titleHeight = divideHeight('title', 1);
 
     var margin = containerHeight - jokeHeight - titleHeight;
-
     joke.style.marginTop = margin + 'px';
+
+    var imageHeight = divideHeight('likeImage', 1);
+    var imageMargin = containerHeight - imageHeight;
+    likeImage.style.marginTop = imageMargin + 'px';
 }
 
 // Menu click
