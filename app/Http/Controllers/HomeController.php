@@ -27,6 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Index
     public function index()
     {
         $users = User::all();

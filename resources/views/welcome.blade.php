@@ -52,6 +52,7 @@
             @endif
         </div>
     </div>
+
     {{-- JAVASCRIPT --}}
     <script type="text/javascript">
         window.addEventListener('load', init);
@@ -61,10 +62,10 @@
         }
         //Misc
         var jokeNumber = 0;
-        @if(Auth::user())
-                var loggedIn = true;
-        @else
-                var loggedIn = false;
+                @if(Auth::user())
+        var loggedIn = true;
+                @else
+        var loggedIn = false;
         @endif
 
         //JSON
@@ -79,6 +80,7 @@
         //divs in the joke
         var jokeContent = document.createElement('div');
         var jokeAuthor = document.createElement('div');
+        var jokeLikes = document.createElement('div');
         //var jokeLikes = document.createElement('div');
         var joke = document.getElementById('joke');
 
@@ -95,13 +97,13 @@
             jokeAuthor.setAttribute('class', 'jokeAuthor');
             jokeAuthor.innerHTML = usersData[userId].name;
 
-            {{--jokeLikes.setAttribute('id', 'jokeLikes');--}}
-            {{--jokeLikes.setAttribute('class', 'jokeLikes');--}}
-            {{--jokeLikes.innerHTML ={!!  !!};--}}
+            jokeLikes.setAttribute('id', 'jokeLikes');
+            jokeLikes.setAttribute('class', 'jokeLikes');
+            jokeLikes.innerHTML = jokeData[jokeNumber].likes;
 
             joke.appendChild(jokeContent);
             joke.appendChild(jokeAuthor);
-            {{--joke.appendChild(jokeLikes);--}}
+            joke.appendChild(jokeLikes);
 
             //calc margin
             calcMargin();
@@ -116,9 +118,26 @@
             setTimeout(jokeSmallAnimation, 700);
         }
         function secondClickDetected() {
-            console.log('like');
+
+            console.log('secondClick');
+
+            jokeLikes.innerHTML = jokeData[jokeNumber].likes + 1;
+
             if (loggedIn) {
-                console.log('loggedIn')
+                console.log('loggedIn');
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "POST",
+                    url: '/like',
+                    dataType: 'JSON',
+                    data: {jokeId: jokeData[jokeNumber].id, jokeLikes: jokeData[jokeNumber].likes + 1},
+                    success: function( data ) {
+                        console.log(data);
+                    }
+                });
             } else {
                 console.log('loggedOut')
             }
@@ -129,16 +148,20 @@
             jokeNumber++;
             jokeContent.style.transform = 'scale(0)';
             jokeAuthor.style.transform = 'scale(0)';
+            jokeLikes.style.transform = 'scale(0)';
             setTimeout(jokeBigAnimation, 700);
         }
         function jokeBigAnimation() {
             processData();
             jokeContent.style.transform = 'scale(1)';
             jokeAuthor.style.transform = 'scale(1)';
+            jokeLikes.style.transform = 'scale(1)';
             joke.addEventListener('click', clickDetected);
         }
 
     </script>
     <script src="{{ URL::asset('js/homeStyle.js') }}" type="text/javascript">
+    </script>
+    <script src="{{ URL::asset('js/jquery-3.1.1.min.js') }}" type="text/javascript">
     </script>
 @stop

@@ -80,6 +80,19 @@ body, html{
     transition: 0.5s;
 }
 
+.jokeLikes {
+    font-family: "Myanmar MN", Avenir, sans-serif;
+    font-size: 30pt;
+    text-align: right;
+    float: right;
+    margin-right: 30%;
+    margin-left: -30%;
+    color: #888888;
+    z-index: 100;
+    display: inline-block;
+    transition: 0.5s;
+
+}
 
 /*DOWNIMAGE*/
 .downImageContainer {
@@ -143,20 +156,6 @@ a{
     border-radius: 40px;
     border: 6px inset #985f0d;
 }
-
-/*.jokeLikes {*/
-    /*font-family: "Myanmar MN", Avenir;*/
-    /*font-size: 30pt;*/
-    /*text-align: right;*/
-    /*float: right;*/
-    /*margin-right: 30%;*/
-    /*margin-left: -30%;*/
-    /*color: #888888;*/
-    /*z-index: 100;*/
-    /*display: inline-block;*/
-    /*transition: 0.5s;*/
-
-/*}*/
 
 /*.likeImageContainer{*/
     /*text-align: center;*/

@@ -12,15 +12,19 @@
 */
 use App\Joke;
 
+//Index
 Route::get('/', 'WelcomeController@index');
 
+//Like
+Route::post('/like', 'WelcomeController@like');
+
+//Auth
 Auth::routes();
 
+//Account
 Route::get('/home', 'HomeController@index');
-Route::get('home', [
-    'as' => 'home', 'uses' => 'HomeController@index'
-]);
 
+//Joke info
 Route::get('/info/{jokePlace}', 'HomeController@jokeInfo');
 
 //New
@@ -32,3 +36,9 @@ Route::put('/edit/{jokeId}', 'HomeController@edit');
 
 Route::get('/edit/{jokeId}', 'HomeController@editJoke');
 Route::get('/delete/{jokeId}', 'HomeController@deleteJoke');
+
+
+
+//Route::get('home', [
+//    'as' => 'home', 'uses' => 'HomeController@index'
+//]);
