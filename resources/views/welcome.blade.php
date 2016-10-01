@@ -83,8 +83,6 @@
         console.log(jokeLikesNumber);
 
         //Misc
-        var userId = {!!Auth::user()->id!!};
-        console.log(userId);
 
         //divs in the joke
         var jokeContent = document.createElement('div');
@@ -145,6 +143,7 @@
             console.log('secondClick');
 
             if (loggedIn) {
+                var loggedInUserId = {!!Auth::user()->id!!};
                 jokeLikes.innerHTML = likeCounter + 1;
                 likeAnimation();
                 $.ajax({
@@ -154,7 +153,7 @@
                     type: "POST",
                     url: '/like',
                     dataType: 'JSON',
-                    data: {jokeId: jokeData[jokeNumber].id, userId: 2 },
+                    data: {jokeId: jokeData[jokeNumber].id, userId: loggedInUserId },
                     success: function (data) {
                         console.log("ajax request succes" + data);
                     }
