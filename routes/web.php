@@ -15,6 +15,9 @@ use App\Joke;
 //Index
 Route::get('/', 'WelcomeController@index');
 
+//Index logged in
+Route::get('/likedJokes/{userId}', 'WelcomeController@likedJokes');
+
 //Like
 Route::post('/like', 'WelcomeController@like');
 
