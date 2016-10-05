@@ -64,7 +64,7 @@ body, html{
 }
 .jokeContent {
     font-family: "Myanmar MN", Avenir, sans-serif;
-    font-size: 53pt;
+    font-size: 35pt;
     padding-left: 10%;
     padding-right: 10%;
     margin-top: 0;
@@ -75,7 +75,7 @@ body, html{
 
 .jokeAuthor {
     font-family: "Myanmar MN", Avenir, sans-serif;
-    font-size: 30pt;
+    font-size: 25pt;
     text-align: center;
     color: #999999;
     z-index: 100;
@@ -95,6 +95,20 @@ body, html{
     display: inline-block;
     transition: 0.5s;
 
+}
+.alreadyLiked{
+    font-family: "Myanmar MN", Avenir, sans-serif;
+    position: fixed;
+    background-color: #2e3436;
+    color: #ffffff;
+    padding: 40px;
+    font-size: 90px;
+    text-align: center;
+    width: 100%;
+    margin-top: -200px;
+    display: none;
+    opacity: 0;
+    transition: opacity 1s;
 }
 
 /*Like images*/

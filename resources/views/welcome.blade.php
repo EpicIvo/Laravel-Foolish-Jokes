@@ -1,3 +1,6 @@
+{{--<pre>--}}
+{{--{{ $welcomeData['jokeLikes'][0]['user_id'] }}--}}
+{{--</pre>--}}
 @extends('layout')
 @section('header')
 
@@ -68,6 +71,7 @@
         var jokeNumber = 0;
                 @if(Auth::user())
         var loggedIn = true;
+        var loggedInUserId = {!!Auth::user()->id!!};
                 @else
         var loggedIn = false;
         @endif
@@ -82,12 +86,12 @@
         console.log(usersData);
         console.log(jokeLikesNumber);
 
-        //Misc
-
         //divs in the joke
+        var container = document.getElementById('container');
         var jokeContent = document.createElement('div');
         var jokeAuthor = document.createElement('div');
         var jokeLikes = document.createElement('div');
+        var alreadyLiked = document.createElement('div');
         var likeCounter = 0;
         var likeImage = document.getElementById('likeImage');
         var joke = document.getElementById('joke');
@@ -103,10 +107,15 @@
 
                 if (jokeLikesNumber[i].joke_id === jokeData[jokeNumber].id) {
                     likeCounter++;
-                    console.log(jokeLikesNumber[i].joke_id + ' ' + jokeData[jokeNumber].id);
                 } else {
                 }
 
+            }
+
+            for (var j = 0; j < jokeLikesNumber.length; j++) {
+                if (jokeLikesNumber[j].user_id === 2) {
+                } else {
+                }
             }
 
             jokeContent.setAttribute('id', 'jokeContent');
@@ -121,9 +130,14 @@
             jokeLikes.setAttribute('class', 'jokeLikes');
             jokeLikes.innerHTML = likeCounter;
 
+            alreadyLiked.setAttribute('id', 'alreadyLiked');
+            alreadyLiked.setAttribute('class', 'alreadyLiked');
+            alreadyLiked.innerHTML = 'Already liked';
+
             joke.appendChild(jokeContent);
             joke.appendChild(jokeAuthor);
             joke.appendChild(jokeLikes);
+            container.appendChild(alreadyLiked);
 
             //calc margin
             calcMargin();
@@ -139,31 +153,44 @@
         }
 
         function secondClickDetected() {
-
             console.log('secondClick');
-
-            if (loggedIn) {
-                var loggedInUserId = {!!Auth::user()->id!!};
-                jokeLikes.innerHTML = likeCounter + 1;
-                likeAnimation();
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: "POST",
-                    url: '/like',
-                    dataType: 'JSON',
-                    data: {jokeId: jokeData[jokeNumber].id, userId: loggedInUserId },
-                    success: function (data) {
-                        console.log("ajax request succes" + data);
-                    }
-                });
+            var likeable = true;
+                    @if(Auth::user())
+            for (var k = 0; k < jokeLikesNumber.length; k++) {
+                if (jokeLikesNumber[k]['user_id'] == loggedInUserId && jokeLikesNumber[k]['joke_id'] == jokeData[jokeNumber].id) {
+                    console.log('cant like');
+                    likeable = false;
+                }
+            }
+            @endif
+            if (likeable) {
+                if (loggedIn) {
+                    console.log(jokeLikesNumber[jokeNumber]);
+                    jokeLikes.innerHTML = likeCounter + 1;
+                    likeAnimation();
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "POST",
+                        url: '/like',
+                        dataType: 'JSON',
+                        data: {jokeId: jokeData[jokeNumber].id, userId: loggedInUserId},
+                        success: function (data) {
+                            console.log("ajax request succes" + data);
+                        }
+                    });
+                } else {
+                    window.location = "http://homestead.app/login";
+                }
             } else {
-                window.location = "http://homestead.app/login";
+                console.log('no like happend');
+                alreadyLiked.style.display = 'block';
+                alreadyLiked.style.opacity = '1';
+                likeable = true;
             }
             joke.removeEventListener('click', secondClickDetected);
         }
-
         function likeAnimation() {
             likeImage.style.transform = 'scale(40)';
             likeImage.style.opacity = '0';
@@ -196,6 +223,8 @@
             jokeAuthor.style.transform = 'scale(1)';
             jokeLikes.style.transform = 'scale(1)';
             setTimeout(restoreListener, 1200);
+            alreadyLiked.style.display = 'none';
+            alreadyLiked.style.opacity = '0';
         }
 
         function restoreListener() {
