@@ -46,4 +46,11 @@ class AdminController extends Controller
             echo "not working :'(" . $joke;
         }
     }
+
+    public function adminDeleteJoke($jokeId)
+    {
+        $joke = Joke::find($jokeId);
+        $joke->delete();
+        return Redirect::action('AdminController@allJokes');
+    }
 }

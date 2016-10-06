@@ -56,3 +56,5 @@ Route::get('/adminInfo/{jokeId}', 'AdminController@adminInfo');
 //edit joke
 Route::get('/adminEditPage/{jokeId}', 'AdminController@adminEditPage');
 Route::put('/adminEdit/{jokeId}', 'AdminController@adminEdit');
+
+Route::get('/adminDelete/{jokeId}', 'AdminController@adminDeleteJoke');

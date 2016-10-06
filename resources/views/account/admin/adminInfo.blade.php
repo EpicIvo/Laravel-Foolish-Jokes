@@ -40,11 +40,11 @@
                                         </a>
                                     </div>
                                     <div class="individualButtonContainer-info">
-                                        {{--<a href={{'/delete/'.$users[Auth::user()->id - 1]->jokes[$jokePlace]->id}}>--}}
+                                        <a href={{'/adminDelete/'.$joke->id}}>
                                             <div class="deleteButton-info">
                                                 Delete
                                             </div>
-                                        {{--</a>--}}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
