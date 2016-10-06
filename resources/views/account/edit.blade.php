@@ -6,6 +6,12 @@
 
 @section('content')
 
+    <a href={{'/info/' . $data['jokePlace']}}>
+        <div class="returnToHome">
+            <
+        </div>
+    </a>
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
