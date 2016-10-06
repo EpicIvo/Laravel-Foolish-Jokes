@@ -56,22 +56,17 @@ class HomeController extends Controller
     }
 
     //Joke Info
-    public function jokeInfo($jokePlace)
+    public function jokeInfo($jokeId)
     {
-        $users = User::all();
-        return view('account/info', compact('users'), compact('jokePlace'));
+        $joke = Joke::all()->find($jokeId);
+        return view('account/info', compact('joke'));
     }
 
     //Edit Joke
-    public function editJoke($jokeId, $jokePlace)
+    public function editPage($jokeId)
     {
-        $data = [
-            'users' => User::all(),
-            'joke' => Joke::all(),
-            'jokeId' => $jokeId,
-            'jokePlace' => $jokePlace
-        ];
-        return view('account/edit', compact('data'));
+        $joke = Joke::all()->find($jokeId);
+        return view('account/edit', compact('joke'));
     }
 
     public function edit($jokeId)

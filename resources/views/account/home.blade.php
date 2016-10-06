@@ -30,7 +30,7 @@
                         <div class="jokeTable">
                             @for($i = 0; $i < count($users[Auth::user()->id - 1]->jokes); $i++)
                                 <div class="jokeInfo" id="jokeInfo">
-                                    <a href={{"/info/".$i}}>
+                                    <a href={{"/info/" . $users[Auth::user()->id - 1]->jokes[$i]->id}}>
                                         <div class="content">
                                             {{ $users[Auth::user()->id - 1]->jokes[$i]->content }}
                                         </div>
