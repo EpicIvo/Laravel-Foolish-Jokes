@@ -97,4 +97,24 @@ class HomeController extends Controller
         return Redirect::action('HomeController@index');
     }
 
+    public function changeState()
+    {
+        $data = Request::capture()->all();
+        $joke = Joke::find($data['jokeId']);
+
+        echo $data['jokeId'];
+
+        if ($joke) {
+            if($joke->status == 1){
+                $joke->status = 0;
+            }else{
+                $joke->status = 1;
+            }
+            $joke->save();
+            return Redirect::action('HomeController@index');
+        }else{
+            echo "not working :'(" . $joke;
+        }
+    }
+
 }

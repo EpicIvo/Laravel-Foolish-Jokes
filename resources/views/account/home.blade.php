@@ -21,15 +21,21 @@
                     <div class="panel-body">
                         <div class="jokeTable">
                             @for($i = 0; $i < count($users[Auth::user()->id - 1]->jokes); $i++)
-                                <div class="jokeInfo">
+                                <div class="jokeInfo" id="jokeInfo">
                                     <a href={{"/info/".$i}}>
                                         <div class="content">
                                             {{ $users[Auth::user()->id - 1]->jokes[$i]->content }}
                                         </div>
                                     </a>
-                                    <div class="stateSwitchButton" id="stateSwitchButton{{$i}}" title="{{$i}}">
-                                        Active
-                                    </div>
+                                        @if($users[Auth::user()->id - 1]->jokes[$i]->status == 1)
+                                            <div class="stateSwitchButtonA" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
+                                                Active
+                                            </div>
+                                        @else
+                                            <div class="stateSwitchButtonU" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
+                                                Unactive
+                                            </div>
+                                        @endif
                                     <div class="date">
                                         {{ $users[Auth::user()->id - 1]->jokes[$i]->created_at }}
                                     </div>
@@ -44,12 +50,15 @@
     <script src="{{ URL::asset('js/jquery-3.1.1.min.js') }}" type="text/javascript">
     </script>
     <script type="text/javascript">
-
                 @for($i = 0; $i < count($users[Auth::user()->id - 1]->jokes); $i++)
+
         var stateSwitchButton = document.getElementById('stateSwitchButton{{$i}}');
+
         stateSwitchButton.addEventListener('click', function changeState(e) {
             ajaxRequest(e.target.title);
+            changeDiv(e.target.id, e.target.title, e.target.className);
         });
+
         @endfor
 
         function ajaxRequest(targetJokeId) {
@@ -64,6 +73,39 @@
                 success: function (data) {
                     console.log("ajax request succes" + data);
                 }
+            });
+        }
+
+        function changeDiv(divId, divTitle, divClass){
+
+            if(divClass == 'stateSwitchButtonA') {
+                var div = document.getElementById(divId);
+                var parent = div.parentNode;
+
+                parent.removeChild(div);
+
+                var newDiv = document.createElement('div');
+                newDiv.setAttribute('class', 'stateSwitchButtonU');
+                newDiv.setAttribute('id', divId);
+                newDiv.setAttribute('title', divTitle);
+                newDiv.innerHTML = 'Unactive';
+            }else{
+                var div = document.getElementById(divId);
+                var parent = div.parentNode;
+
+                parent.removeChild(div);
+
+                var newDiv = document.createElement('div');
+                newDiv.setAttribute('class', 'stateSwitchButtonA');
+                newDiv.setAttribute('id', divId);
+                newDiv.setAttribute('title', divTitle);
+                newDiv.innerHTML = 'Active';
+            }
+            parent.appendChild(newDiv);
+
+            newDiv.addEventListener('click', function changeState(e) {
+                ajaxRequest(e.target.title);
+                changeDiv(e.target.id, e.target.title, e.target.className);
             });
         }
     </script>

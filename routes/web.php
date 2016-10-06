@@ -33,6 +33,7 @@ Route::get('/info/{jokePlace}', 'HomeController@jokeInfo');
 //New
 Route::get('/new', 'HomeController@newJoke');
 Route::post('/create', 'HomeController@create');
+
 //Edit
 Route::get('/editJoke/{jokeId}/{jokePlace}', 'HomeController@editJoke');
 Route::put('/edit/{jokeId}', 'HomeController@edit');
@@ -40,6 +41,8 @@ Route::put('/edit/{jokeId}', 'HomeController@edit');
 Route::get('/edit/{jokeId}', 'HomeController@editJoke');
 Route::get('/delete/{jokeId}', 'HomeController@deleteJoke');
 
+//changeState
+Route::post('/changeState', 'HomeController@changeState');
 
 
 //Route::get('home', [

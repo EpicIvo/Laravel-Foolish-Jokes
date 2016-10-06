@@ -52,8 +52,20 @@ border-bottom: 1px dashed #ec971f;
     padding: 10px;
 }
 
-.stateSwitchButton {
+.stateSwitchButtonA {
     background-color: #2ca02c;
+    color: #ffffff;
+    font-size: 16pt;
+    display: inline-block;
+    margin-left: 100px;
+    width: 140px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.stateSwitchButtonU {
+    background-color: #761c19;
     color: #ffffff;
     font-size: 16pt;
     display: inline-block;
