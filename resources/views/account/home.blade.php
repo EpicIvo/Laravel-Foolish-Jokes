@@ -21,16 +21,19 @@
                     <div class="panel-body">
                         <div class="jokeTable">
                             @for($i = 0; $i < count($users[Auth::user()->id - 1]->jokes); $i++)
-                                <a href={{"/info/".$i}}>
-                                    <div class="jokeInfo">
+                                <div class="jokeInfo">
+                                    <a href={{"/info/".$i}}>
                                         <div class="content">
                                             {{ $users[Auth::user()->id - 1]->jokes[$i]->content }}
                                         </div>
-                                        <div class="date">
-                                            {{ $users[Auth::user()->id - 1]->jokes[$i]->created_at }}
-                                        </div>
+                                    </a>
+                                    <div class="stateSwitchButton" id="stateSwitchButton{{$i}}" title="{{$i}}">
+                                        Active
                                     </div>
-                                </a>
+                                    <div class="date">
+                                        {{ $users[Auth::user()->id - 1]->jokes[$i]->created_at }}
+                                    </div>
+                                </div>
                             @endfor
                         </div>
                     </div>
@@ -38,4 +41,30 @@
             </div>
         </div>
     </div>
+    <script src="{{ URL::asset('js/jquery-3.1.1.min.js') }}" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+
+                @for($i = 0; $i < count($users[Auth::user()->id - 1]->jokes); $i++)
+        var stateSwitchButton = document.getElementById('stateSwitchButton{{$i}}');
+        stateSwitchButton.addEventListener('click', function changeState(e) {
+            ajaxRequest(e.target.title);
+        });
+        @endfor
+
+        function ajaxRequest(targetJokeId) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: '/changeState',
+                dataType: 'JSON',
+                data: {jokeId: targetJokeId},
+                success: function (data) {
+                    console.log("ajax request succes" + data);
+                }
+            });
+        }
+    </script>
 @endsection
