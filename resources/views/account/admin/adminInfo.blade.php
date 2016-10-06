@@ -1,3 +1,4 @@
+@extends('layouts.adminLayout')
 @extends('layouts.app')
 
 @section('moreCss')
@@ -6,7 +7,7 @@
 
 @section('content')
 
-    <a href={{'/home'}}>
+    <a href={{'/allJokes'}}>
         <div class="returnToHome">
             <
         </div>
@@ -32,14 +33,14 @@
                                 </div>
                                 <div class="buttonsContainer-info">
                                     <div class="individualButtonContainer-info">
-                                        <a href={{'/editPage/'.$joke->id}}>
+                                        <a href={{'/adminEditPage/'.$joke->id}}>
                                             <div class="editButton-info">
                                                 Edit
                                             </div>
                                         </a>
                                     </div>
                                     <div class="individualButtonContainer-info">
-                                        <a href={{'/delete/'.$joke->id}}>
+                                        <a href={{'/adminDelete/'.$joke->id}}>
                                             <div class="deleteButton-info">
                                                 Delete
                                             </div>

@@ -6,6 +6,12 @@
 
 @section('content')
 
+    <a href={{'/info/' . $joke->id}}>
+        <div class="returnToHome">
+            <
+        </div>
+    </a>
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -14,9 +20,9 @@
 
                     <div class="panel-body">
 
-                        {!! Form::model($data['joke'], ['url' => '/edit/'.$data['jokeId'], 'method' => 'put']) !!}
+                        {!! Form::model($joke, ['url' => '/edit/'.$joke->id, 'method' => 'put']) !!}
                         {{ Form::label('joke', 'Joke:') }}
-                        {{ Form::textarea('jokeContent', $data['users'][Auth::user()->id - 1]->jokes[$data['jokePlace']]->content, ['class' => 'form-control', 'required'] ) }}
+                        {{ Form::textarea('jokeContent', $joke->content, ['class' => 'form-control', 'required'] ) }}
 
                         {{ Form::hidden('userId', Auth::user()->id) }}
 

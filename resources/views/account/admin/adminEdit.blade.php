@@ -1,3 +1,4 @@
+@extends('layouts.adminLayout')
 @extends('layouts.app')
 
 @section('moreCss')
@@ -6,7 +7,7 @@
 
 @section('content')
 
-    <a href={{'/home'}}>
+    <a href={{'/adminInfo/' . $joke->id}}>
         <div class="returnToHome">
             <
         </div>
@@ -16,17 +17,17 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">New Joke</div>
+                    <div class="panel-heading">Edit Joke</div>
 
                     <div class="panel-body">
 
-                        {!! Form::model($joke, ['url' => '/create']) !!}
-                            {{ Form::label('joke', 'Joke:') }}
-                            {{ Form::textarea('jokeContent', null, ['class' => 'form-control', 'required'] ) }}
+                        {!! Form::model($joke, ['url' => '/adminEdit/'.$joke->id, 'method' => 'put']) !!}
+                        {{ Form::label('joke', 'Joke:') }}
+                        {{ Form::textarea('jokeContent', $joke->content, ['class' => 'form-control', 'required'] ) }}
 
-                            {{ Form::hidden('userId', Auth::user()->id) }}
+                        {{ Form::hidden('userId', $joke->user_id) }}
 
-                            {{ Form::submit('Place Joke', ['class' => 'formSubmit']) }}
+                        {{ Form::submit('Edit Joke', ['class' => 'formSubmit']) }}
                         {!! Form::close() !!}
 
                     </div>
