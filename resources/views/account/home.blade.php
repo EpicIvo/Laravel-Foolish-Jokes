@@ -6,6 +6,14 @@
 
 @section('content')
 
+    @if(Auth::user()->role == 'admin')
+        <a href="{{ URL::to('allJokes') }}">
+            <div class="newJokeButton">
+                All Jokes
+            </div>
+        </a>
+    @endif
+
     <a href="{{ URL::to('new') }}">
         <div class="newJokeButton">
             New Joke
@@ -27,15 +35,15 @@
                                             {{ $users[Auth::user()->id - 1]->jokes[$i]->content }}
                                         </div>
                                     </a>
-                                        @if($users[Auth::user()->id - 1]->jokes[$i]->status == 1)
-                                            <div class="stateSwitchButtonA" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
-                                                Active
-                                            </div>
-                                        @else
-                                            <div class="stateSwitchButtonU" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
-                                                Unactive
-                                            </div>
-                                        @endif
+                                    @if($users[Auth::user()->id - 1]->jokes[$i]->status == 1)
+                                        <div class="stateSwitchButtonA" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
+                                            Active
+                                        </div>
+                                    @else
+                                        <div class="stateSwitchButtonU" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
+                                            Unactive
+                                        </div>
+                                    @endif
                                     <div class="date">
                                         {{ $users[Auth::user()->id - 1]->jokes[$i]->created_at }}
                                     </div>
@@ -76,9 +84,9 @@
             });
         }
 
-        function changeDiv(divId, divTitle, divClass){
+        function changeDiv(divId, divTitle, divClass) {
 
-            if(divClass == 'stateSwitchButtonA') {
+            if (divClass == 'stateSwitchButtonA') {
                 var div = document.getElementById(divId);
                 var parent = div.parentNode;
 
@@ -89,7 +97,7 @@
                 newDiv.setAttribute('id', divId);
                 newDiv.setAttribute('title', divTitle);
                 newDiv.innerHTML = 'Unactive';
-            }else{
+            } else {
                 var div = document.getElementById(divId);
                 var parent = div.parentNode;
 

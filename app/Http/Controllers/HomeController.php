@@ -85,7 +85,7 @@ class HomeController extends Controller
             $joke->updated_at = $time->toDateTimeString();
             $joke->save();
             return Redirect::action('HomeController@index');
-        }else{
+        } else {
             echo "not working :'(" . $joke;
         }
     }
@@ -105,14 +105,14 @@ class HomeController extends Controller
         echo $data['jokeId'];
 
         if ($joke) {
-            if($joke->status == 1){
+            if ($joke->status == 1) {
                 $joke->status = 0;
-            }else{
+            } else {
                 $joke->status = 1;
             }
             $joke->save();
             return Redirect::action('HomeController@index');
-        }else{
+        } else {
             echo "not working :'(" . $joke;
         }
     }

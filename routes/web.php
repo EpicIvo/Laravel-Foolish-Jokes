@@ -11,6 +11,9 @@
 |
 */
 use App\Joke;
+//Auth
+Auth::routes();
+
 
 //Index
 Route::get('/', 'WelcomeController@index');
@@ -21,8 +24,6 @@ Route::get('/likedJokes/{userId}', 'WelcomeController@likedJokes');
 //Like
 Route::post('/like', 'WelcomeController@like');
 
-//Auth
-Auth::routes();
 
 //Account
 Route::get('/home', 'HomeController@index');
@@ -45,6 +46,13 @@ Route::get('/delete/{jokeId}', 'HomeController@deleteJoke');
 Route::post('/changeState', 'HomeController@changeState');
 
 
-//Route::get('home', [
-//    'as' => 'home', 'uses' => 'HomeController@index'
-//]);
+//ADMIN
+//all jokes
+Route::get('/allJokes', 'AdminController@allJokes');
+
+//joke info
+Route::get('/adminInfo/{jokeId}', 'AdminController@adminInfo');
+
+//edit joke
+Route::get('/adminEditPage/{jokeId}', 'AdminController@adminEditPage');
+Route::put('/adminEdit/{jokeId}', 'AdminController@adminEdit');
