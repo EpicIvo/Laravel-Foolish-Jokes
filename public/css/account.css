@@ -37,7 +37,6 @@ border-bottom: 1px dashed #ec971f;
 }
 
 .formSubmit:hover {
-
     border: 2px solid #ec971f;
     background-color: #2ca02c;
 }
@@ -50,6 +49,31 @@ border-bottom: 1px dashed #ec971f;
     font-size: 16pt;
     display: inline-block;
     width: 600px;
+    padding: 10px;
+}
+
+.stateSwitchButtonA {
+    background-color: #2ca02c;
+    color: #ffffff;
+    font-size: 16pt;
+    display: inline-block;
+    margin-left: 100px;
+    width: 140px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.stateSwitchButtonU {
+    background-color: #761c19;
+    color: #ffffff;
+    font-size: 16pt;
+    display: inline-block;
+    margin-left: 100px;
+    width: 140px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .date {

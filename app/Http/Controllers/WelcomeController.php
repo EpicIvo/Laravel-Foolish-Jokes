@@ -15,8 +15,11 @@ class WelcomeController extends Controller
     //Index
     public function index()
     {
+        $jokes = DB::table('jokes')
+            ->where('jokes.status', '=', 1)
+            ->get();
         $welcomeData = [
-            'jokes' => Joke::all(),
+            'jokes' => $jokes,
             'users' => User::all(),
             'jokeLikes' => jokeLike::all()
         ];

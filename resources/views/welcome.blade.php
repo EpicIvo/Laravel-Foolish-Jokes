@@ -1,6 +1,3 @@
-{{--<pre>--}}
-{{--{{ $welcomeData['jokeLikes'][0]['user_id'] }}--}}
-{{--</pre>--}}
 @extends('layout')
 @section('header')
 
