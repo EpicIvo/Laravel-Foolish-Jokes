@@ -6,20 +6,27 @@
 
 @section('content')
 
-    @if(Auth::user()->role == 'admin')
-        <a href="{{ URL::to('allJokes') }}">
-            <div class="newJokeButton">
-                All Jokes
-            </div>
-        </a>
-    @endif
+    <div class="newJokeButtonContainer">
+        @if(Auth::user()->role == 'admin')
+            <a href="{{ URL::to('allJokes') }}">
+                <div class="adminNewJokeButton">
+                    All Jokes
+                </div>
+            </a>
 
-    <a href="{{ URL::to('new') }}">
-        <div class="newJokeButton">
-            New Joke
-        </div>
-    </a>
-
+            <a href="{{ URL::to('new') }}">
+                <div class="adminNewJokeButton">
+                    New Joke
+                </div>
+            </a>
+        @else
+            <a href="{{ URL::to('new') }}">
+                <div class="newJokeButton">
+                    New Joke
+                </div>
+            </a>
+        @endif
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-20 col-md-offset-0">
