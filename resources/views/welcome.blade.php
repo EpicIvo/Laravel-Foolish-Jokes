@@ -13,8 +13,10 @@
             <div id='container' class="container">
 
                 <div id='title' class="title">
-                    Foolish Jokes
-                    <div class='betaText'><i>Development phase</i></div>
+                    <div class="titleText">
+                        Foolish Jokes
+                        <div class='betaText'><i>Development phase</i></div>
+                    </div>
                 </div>
 
                 <div class="likeImageContainer" id="likeImageContainer">
@@ -227,6 +229,23 @@
         function restoreListener() {
             joke.addEventListener('click', clickDetected);
         }
+
+        //      Search functionality
+
+        window.addEventListener('input', function (e) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: '/search',
+                dataType: 'JSON',
+                data: {inputData: e.target.value},
+                success: function (data) {
+                    console.log("ajax request succes" + data);
+                }
+            });
+        }, false);
 
     </script>
     <script src="{{ URL::asset('js/homeStyle.js') }}" type="text/javascript">

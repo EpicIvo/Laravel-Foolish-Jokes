@@ -24,6 +24,9 @@ Route::get('/likedJokes/{userId}', 'WelcomeController@likedJokes');
 //Like
 Route::post('/like', 'WelcomeController@like');
 
+//Search
+Route::get('/search', 'WelcomeController@search');
+
 
 //Account
 Route::get('/home', 'HomeController@index');

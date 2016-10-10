@@ -31,7 +31,19 @@
         <div class="row">
             <div class="col-md-20 col-md-offset-0">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Your Jokes</div>
+                    <div class="panel-heading">
+
+                        <div class="yourJokesTitle">
+                            Your Jokes
+                        </div>
+
+                        <div class="search">
+                            {!! Form::model($users[Auth::user()->id - 1]->jokes, ['url' => '/', 'method' => 'get', 'class' => 'searchForm']) !!}
+                            {{ Form::text('search', '', ['class' => 'searchFormInput', 'placeholder' => 'Search']) }}
+                            {!! Form::close() !!}
+                        </div>
+
+                    </div>
 
                     <div class="panel-body">
                         <div class="jokeTable">
