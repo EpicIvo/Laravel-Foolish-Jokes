@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="panel-body">
-                        <div class="jokeTable">
+                        <div class="jokeTable" id="jokeTable">
                             @for($i = 0; $i < count($users[Auth::user()->id - 1]->jokes); $i++)
                                 <div class="jokeInfo" id="jokeInfo">
                                     <a href={{"/info/" . $users[Auth::user()->id - 1]->jokes[$i]->id}}>
@@ -68,6 +68,7 @@
                                     </div>
                                 </div>
                             @endfor
+                            <div id="result"></div>
                         </div>
                     </div>
                 </div>
@@ -135,5 +136,63 @@
                 changeDiv(e.target.id, e.target.title, e.target.className);
             });
         }
+
+        //      Search functionality
+
+        window.addEventListener('input', function (e) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: "POST",
+                        url: '/search',
+                        dataType: 'JSON',
+                        data: {inputData: e.target.value},
+                        success: function (data) {
+                            console.log("ajax request succes");
+                            $('#jokeTable').html('');
+                            if (e.target.value == '') {
+                                $('#jokeTable').html('');
+                            } else {
+                                for (var i = 0; i < data.jokes.length; i++) {
+                                    if (data.jokes[i].status == 1) {
+                                        $('#jokeTable').append('<div class="jokeInfo" id="jokeInfo">' +
+                                                '<a href="/info/' + data.jokes[i].id + '">' +
+                                                '<div class="content">' + data.jokes[i].content +
+                                                '</a>' +
+                                                '</div>' +
+                                                '<div class="stateSwitchButtonA" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
+                                                'Active' +
+                                                '</div>' +
+                                                '<div class="date">' + data.jokes[i].created_at +
+                                                '</div>'
+                                        );
+                                    } else {
+                                        $('#jokeTable').append('<div class="jokeInfo" id="jokeInfo">' +
+                                                '<a href="/info/' + data.jokes[i].id + '">' +
+                                                '<div class="content">' + data.jokes[i].content +
+                                                '</a>' +
+                                                '</div>' +
+                                                '<div class="stateSwitchButtonU" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
+                                                'Unactive' +
+                                                '</div>' +
+                                                '<div class="date">' + data.jokes[i].created_at + '</div>'
+                                        );
+                                    }
+
+                                    var stateSwitchButton = document.getElementById('stateSwitchButton' + i);
+                                    stateSwitchButton.addEventListener('click', function changeState(e) {
+                                        ajaxRequest(e.target.title);
+                                        changeDiv(e.target.id, e.target.title, e.target.className);
+                                    });
+                                }
+                            }
+                        }
+                    });
+                },
+                false
+        )
+        ;
+
     </script>
 @endsection

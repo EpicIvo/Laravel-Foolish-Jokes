@@ -54,15 +54,4 @@ class WelcomeController extends Controller
         $like->save();
 
     }
-
-    public function search()
-    {
-        $data = Request::capture()->all();
-        $jokes = DB::table('jokes')
-            ->leftJoin('joke_likes', 'jokes.id', '=', 'joke_likes.joke_id')
-            ->select('jokes.id', 'jokes.user_id', 'jokes.content')
-            ->where('joke_likes.user_id', 'like', $data)
-            ->get();
-        print_r($jokes);
-    }
 }
