@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Redirect;
 use Carbon\Carbon;
 use App\User;
@@ -110,6 +111,25 @@ class HomeController extends Controller
         } else {
             echo "not working :'(" . $joke;
         }
+    }
+
+    //Search
+
+    public function search()
+    {
+        $data = Request::capture()->all();
+        $searchQuery = $data['inputData'];
+        $userId = $data['userId'];
+        $jokes = DB::table('jokes')
+            ->where('jokes.content', 'like', '%' . $searchQuery . '%')
+            ->where('jokes.user_id', '=', $userId)
+            ->get();
+
+        $viewData = [
+            'searchQuery' => $searchQuery,
+            'jokes' => $jokes,
+        ];
+        return $viewData;
     }
 
 }

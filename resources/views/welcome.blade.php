@@ -13,8 +13,10 @@
             <div id='container' class="container">
 
                 <div id='title' class="title">
-                    Foolish Jokes
-                    <div class='betaText'><i>Development phase</i></div>
+                    <div class="titleText">
+                        Foolish Jokes
+                        <div class='betaText'><i>Development phase</i></div>
+                    </div>
                 </div>
 
                 <div class="likeImageContainer" id="likeImageContainer">

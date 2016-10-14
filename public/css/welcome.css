@@ -35,17 +35,21 @@ body, html{
     overflow: hidden;
 }
 
-
 /*Title*/
 .title {
     transition-duration:  1s;
-    font-family: "Myanmar MN", Avenir, sans-serif;
-    font-size: 60pt;
-    text-align: center;
     color: #133d55;
     border-bottom: 2px solid #E6E7E8;
-    vertical-align: bottom;
+    width: 100%;
 }
+
+/*Title text*/
+.titleText{
+    text-align: center;
+    font-family: "Myanmar MN", Avenir, sans-serif;
+    font-size: 60pt;
+}
+
 .betaText{
     font-family: Avenir, sans-serif;
     font-size: 20pt;

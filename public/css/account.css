@@ -2,12 +2,71 @@ a:hover {
     text-decoration: none;
 }
 
+/*Placeholder*/
+::-webkit-input-placeholder {
+    color: #ffffff;
+}
+
 /* Account page */
 .jokesTable {
 }
 
+.panel-heading{
+    height: 60px;
+}
+
+.yourJokesTitle{
+    display: inline-block;
+    font-size: 20pt;
+}
+
+/*Search*/
+.search{
+    display: inline-block;
+    position: absolute;
+    margin-left: 40px;
+}
+.searchFormInput {
+    font-family: "Myanmar MN", Avenir, sans-serif;
+    height: 40px;
+    width: 600px;
+    text-indent: 10px;
+    font-size: 16pt;
+    border-radius: 10px;
+    border: 3px inset #985f0d;
+    background-color: #133d55;
+    color: #ffffff;
+    transition-duration: 0.5s;
+}
+.searchFormInput:focus{
+    border-color: #eea236;
+    outline: none;
+}
+.searchFormInput:hover{
+    border-color: #eea236;
+}
+
 .jokeInfo {
 border-bottom: 1px dashed #ec971f;
+}
+
+.newJokeButtonContainer{
+    text-align: center;
+}
+
+
+.adminNewJokeButton {
+    transition-duration: 0.5s;
+    text-align: center;
+    background-color: #133d55;
+    color: #f9f9f9;
+    width: 40%;
+    padding: 10px;
+    font-size: 40pt;
+    border-radius: 40px;
+    border: 6px inset #985f0d;
+    margin: 30px 30px;
+    display: inline-block;
 }
 
 .newJokeButton {
@@ -24,6 +83,9 @@ border-bottom: 1px dashed #ec971f;
 }
 
 .newJokeButton:hover {
+    border-color: #eea236;
+}
+.adminNewJokeButton:hover {
     border-color: #eea236;
 }
 
