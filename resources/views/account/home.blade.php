@@ -140,6 +140,7 @@
         //      Search functionality
 
         window.addEventListener('input', function (e) {
+                    var userId = {!! json_encode($users[Auth::user()->id - 1]->id) !!};
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -147,13 +148,10 @@
                         type: "POST",
                         url: '/search',
                         dataType: 'JSON',
-                        data: {inputData: e.target.value},
+                        data: {inputData: e.target.value, userId: userId},
                         success: function (data) {
-                            console.log("ajax request succes");
+                            console.log("ajax request succes" + data.userId);
                             $('#jokeTable').html('');
-                            if (e.target.value == '') {
-                                $('#jokeTable').html('');
-                            } else {
                                 for (var i = 0; i < data.jokes.length; i++) {
                                     if (data.jokes[i].status == 1) {
                                         $('#jokeTable').append('<div class="jokeInfo" id="jokeInfo">' +
@@ -187,7 +185,6 @@
                                     });
                                 }
                             }
-                        }
                     });
                 },
                 false

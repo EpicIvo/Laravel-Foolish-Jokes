@@ -119,8 +119,10 @@ class HomeController extends Controller
     {
         $data = Request::capture()->all();
         $searchQuery = $data['inputData'];
+        $userId = $data['userId'];
         $jokes = DB::table('jokes')
             ->where('jokes.content', 'like', '%' . $searchQuery . '%')
+            ->where('jokes.user_id', '=', $userId)
             ->get();
 
         $viewData = [
