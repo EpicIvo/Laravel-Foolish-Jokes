@@ -8,6 +8,7 @@ use App\User;
 use App\Joke;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use DB;
 
 class AdminController extends Controller
 {
@@ -52,5 +53,20 @@ class AdminController extends Controller
         $joke = Joke::find($jokeId);
         $joke->delete();
         return Redirect::action('AdminController@allJokes');
+    }
+
+    public function adminSearch()
+    {
+        $data = Request::capture()->all();
+        $searchQuery = $data['inputData'];
+        $jokes = DB::table('jokes')
+            ->where('jokes.content', 'like', '%' . $searchQuery . '%')
+            ->get();
+
+        $viewData = [
+            'searchQuery' => $searchQuery,
+            'jokes' => $jokes,
+        ];
+        return $viewData;
     }
 }

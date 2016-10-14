@@ -49,20 +49,27 @@
                         <div class="jokeTable" id="jokeTable">
                             @for($i = 0; $i < count($users[Auth::user()->id - 1]->jokes); $i++)
                                 <div class="jokeInfo" id="jokeInfo">
+                                    <div class="content">
+                                        {{ $users[Auth::user()->id - 1]->jokes[$i]->content }}
+                                    </div>
+                                    <div class="stateSwitchButtonContainer">
+                                        @if($users[Auth::user()->id - 1]->jokes[$i]->status == 1)
+                                            <div class="stateSwitchButtonA" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
+                                                Active
+                                            </div>
+                                        @else
+                                            <div class="stateSwitchButtonU" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
+                                                Unactive
+                                            </div>
+                                        @endif
+                                    </div>
                                     <a href={{"/info/" . $users[Auth::user()->id - 1]->jokes[$i]->id}}>
-                                        <div class="content">
-                                            {{ $users[Auth::user()->id - 1]->jokes[$i]->content }}
+                                        <div class="infoButtonContainer">
+                                            <div class="infoButton">
+                                                Info
+                                            </div>
                                         </div>
                                     </a>
-                                    @if($users[Auth::user()->id - 1]->jokes[$i]->status == 1)
-                                        <div class="stateSwitchButtonA" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
-                                            Active
-                                        </div>
-                                    @else
-                                        <div class="stateSwitchButtonU" id="stateSwitchButton{{$i}}" title="{{$users[Auth::user()->id - 1]->jokes[$i]->id}}">
-                                            Unactive
-                                        </div>
-                                    @endif
                                     <div class="date">
                                         {{ $users[Auth::user()->id - 1]->jokes[$i]->created_at }}
                                     </div>
@@ -152,39 +159,53 @@
                         success: function (data) {
                             console.log("ajax request succes" + data.userId);
                             $('#jokeTable').html('');
-                                for (var i = 0; i < data.jokes.length; i++) {
-                                    if (data.jokes[i].status == 1) {
-                                        $('#jokeTable').append('<div class="jokeInfo" id="jokeInfo">' +
-                                                '<a href="/info/' + data.jokes[i].id + '">' +
-                                                '<div class="content">' + data.jokes[i].content +
-                                                '</a>' +
-                                                '</div>' +
-                                                '<div class="stateSwitchButtonA" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
-                                                'Active' +
-                                                '</div>' +
-                                                '<div class="date">' + data.jokes[i].created_at +
-                                                '</div>'
-                                        );
-                                    } else {
-                                        $('#jokeTable').append('<div class="jokeInfo" id="jokeInfo">' +
-                                                '<a href="/info/' + data.jokes[i].id + '">' +
-                                                '<div class="content">' + data.jokes[i].content +
-                                                '</a>' +
-                                                '</div>' +
-                                                '<div class="stateSwitchButtonU" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
-                                                'Unactive' +
-                                                '</div>' +
-                                                '<div class="date">' + data.jokes[i].created_at + '</div>'
-                                        );
-                                    }
-
-                                    var stateSwitchButton = document.getElementById('stateSwitchButton' + i);
-                                    stateSwitchButton.addEventListener('click', function changeState(e) {
-                                        ajaxRequest(e.target.title);
-                                        changeDiv(e.target.id, e.target.title, e.target.className);
-                                    });
+                            for (var i = 0; i < data.jokes.length; i++) {
+                                if (data.jokes[i].status == 1) {
+                                    $('#jokeTable').append('<div class="jokeInfo" id="jokeInfo">' +
+                                            '<a href="/info/' + data.jokes[i].id + '">' +
+                                            '<div class="content">' + data.jokes[i].content +
+                                            '</a>' +
+                                            '</div>' +
+                                            '<div class="stateSwitchButtonContainer">' +
+                                            '<div class="stateSwitchButtonA" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
+                                            'Active' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '<div class="infoButtonContainer">' +
+                                            '<div class="infoButton">' +
+                                            'Info' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '<div class="date">' + data.jokes[i].created_at +
+                                            '</div>'
+                                    );
+                                } else {
+                                    $('#jokeTable').append('<div class="jokeInfo" id="jokeInfo">' +
+                                            '<a href="/info/' + data.jokes[i].id + '">' +
+                                            '<div class="content">' + data.jokes[i].content +
+                                            '</a>' +
+                                            '</div>' +
+                                            '<div class="stateSwitchButtonContainer">' +
+                                            '<div class="stateSwitchButtonU" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
+                                            'Unactive' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '<div class="infoButtonContainer">' +
+                                            '<div class="infoButton">' +
+                                            'Info' +
+                                            '</div>' +
+                                            "</div>" +
+                                            '<div class="date">' + data.jokes[i].created_at + '</div>'
+                                    );
                                 }
+
+                                var stateSwitchButton = document.getElementById('stateSwitchButton' + i);
+                                stateSwitchButton.addEventListener('click', function changeState(e) {
+                                    ajaxRequest(e.target.title);
+                                    changeDiv(e.target.id, e.target.title, e.target.className);
+                                });
                             }
+                        }
                     });
                 },
                 false
