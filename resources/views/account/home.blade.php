@@ -211,9 +211,6 @@
                         }
                     });
                 },
-                false
-        )
-        ;
-
+                false);
     </script>
 @endsection

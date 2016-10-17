@@ -57,10 +57,20 @@ class AdminController extends Controller
     public function adminSearch()
     {
         $data = Request::capture()->all();
-        $searchQuery = $data['inputData'];
-        $jokes = DB::table('jokes')
-            ->where('jokes.content', 'like', '%' . $searchQuery . '%')
-            ->get();
+        $searchQuery = $data['textInput'];
+
+        $selectInput = $data['selectInput'];
+
+        if ($selectInput == '') {
+            $jokes = DB::table('jokes')
+                ->where('jokes.content', 'like', '%' . $searchQuery . '%')
+                ->get();
+        } else {
+            $jokes = DB::table('jokes')
+                ->where('jokes.content', 'like', '%' . $searchQuery . '%')
+                ->where('jokes.tag', '=', $selectInput)
+                ->get();
+        }
 
         $viewData = [
             'searchQuery' => $searchQuery,
