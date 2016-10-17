@@ -24,6 +24,9 @@
                             {{ Form::label('joke', 'Joke:') }}
                             {{ Form::textarea('jokeContent', null, ['class' => 'form-control', 'required'] ) }}
 
+                            {{ Form::label('jokeTag', 'Tag:') }}<br>
+                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance'], null, ['class' => 'jokeTag', 'placeholder' => 'select', 'required']) }}
+                            <br>
                             {{ Form::hidden('userId', Auth::user()->id) }}
 
                             {{ Form::submit('Place Joke', ['class' => 'formSubmit']) }}

@@ -8,6 +8,7 @@ use App\User;
 use App\Joke;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use DB;
 
 class AdminController extends Controller
 {
@@ -43,7 +44,6 @@ class AdminController extends Controller
             $joke->save();
             return Redirect::action('AdminController@allJokes');
         } else {
-            echo "not working :'(" . $joke;
         }
     }
 
@@ -52,5 +52,30 @@ class AdminController extends Controller
         $joke = Joke::find($jokeId);
         $joke->delete();
         return Redirect::action('AdminController@allJokes');
+    }
+
+    public function adminSearch()
+    {
+        $data = Request::capture()->all();
+        $searchQuery = $data['textInput'];
+
+        $selectInput = $data['selectInput'];
+
+        if ($selectInput == '') {
+            $jokes = DB::table('jokes')
+                ->where('jokes.content', 'like', '%' . $searchQuery . '%')
+                ->get();
+        } else {
+            $jokes = DB::table('jokes')
+                ->where('jokes.content', 'like', '%' . $searchQuery . '%')
+                ->where('jokes.tag', '=', $selectInput)
+                ->get();
+        }
+
+        $viewData = [
+            'searchQuery' => $searchQuery,
+            'jokes' => $jokes,
+        ];
+        return $viewData;
     }
 }

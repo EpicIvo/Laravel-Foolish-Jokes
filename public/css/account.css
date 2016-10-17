@@ -11,21 +11,22 @@ a:hover {
 .jokesTable {
 }
 
-.panel-heading{
+.panel-heading {
     height: 60px;
 }
 
-.yourJokesTitle{
+.yourJokesTitle {
     display: inline-block;
     font-size: 20pt;
 }
 
 /*Search*/
-.search{
+.search {
     display: inline-block;
     position: absolute;
     margin-left: 40px;
 }
+
 .searchFormInput {
     font-family: "Myanmar MN", Avenir, sans-serif;
     height: 40px;
@@ -38,22 +39,28 @@ a:hover {
     color: #ffffff;
     transition-duration: 0.5s;
 }
-.searchFormInput:focus{
+
+.searchFormInput:focus {
     border-color: #eea236;
     outline: none;
 }
-.searchFormInput:hover{
+
+.searchFormInput:hover {
     border-color: #eea236;
 }
 
 .jokeInfo {
-border-bottom: 1px dashed #ec971f;
+    border-bottom: 1px dashed #ec971f;
+    height: 150px;
+    padding-top: 10px;
+}
+.jokeInfo:hover {
+    cursor: pointer;
 }
 
-.newJokeButtonContainer{
+.newJokeButtonContainer {
     text-align: center;
 }
-
 
 .adminNewJokeButton {
     transition-duration: 0.5s;
@@ -85,6 +92,7 @@ border-bottom: 1px dashed #ec971f;
 .newJokeButton:hover {
     border-color: #eea236;
 }
+
 .adminNewJokeButton:hover {
     border-color: #eea236;
 }
@@ -93,55 +101,71 @@ border-bottom: 1px dashed #ec971f;
     transition-duration: .5s;
     margin-top: 20px;
     border-radius: 5px;
-    border: 2px solid #761c19;
+    border: 3px inset #985f0d;
     background-color: #133d55;
     color: #f9f2f4;
 }
 
 .formSubmit:hover {
-    border: 2px solid #ec971f;
-    background-color: #2ca02c;
-}
-
-.jokeInfo:hover {
-    cursor: pointer;
+    border: 3px inset #eea236;
 }
 
 .content {
     font-size: 16pt;
+    text-align: center;
+    color: #2a88bd;
+}
+
+/*State switch button*/
+.stateSwitchButtonContainer {
     display: inline-block;
-    width: 600px;
-    padding: 10px;
+    color: #ffffff;
+    font-size: 25pt;
 }
 
 .stateSwitchButtonA {
     background-color: #2ca02c;
-    color: #ffffff;
-    font-size: 16pt;
-    display: inline-block;
-    margin-left: 100px;
-    width: 140px;
     text-align: center;
-    padding: 5px;
+    margin-left: 150px;
+    height: 50px;
+    width: 200px;
     border-radius: 10px;
+    margin-top: 33px;
 }
 
 .stateSwitchButtonU {
     background-color: #761c19;
-    color: #ffffff;
-    font-size: 16pt;
-    display: inline-block;
-    margin-left: 100px;
-    width: 140px;
     text-align: center;
-    padding: 5px;
+    margin-left: 150px;
+    height: 50px;
+    width: 200px;
     border-radius: 10px;
+    margin-top: 33px;
+}
+
+.infoButtonContainer{
+    display: inline-block;
+    color: #ffffff;
+    font-size: 25pt;
+}
+
+.infoButton{
+    display: inline-block;
+    background-color: #1f648b;
+    text-align: center;
+    margin-left: 50px;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+
 }
 
 .date {
     font-size: 16pt;
     float: right;
     display: inline-block;
+    line-height: 116px;
+    margin-right: 150px;
 }
 
 .returnToHome {
@@ -171,7 +195,7 @@ border-bottom: 1px dashed #ec971f;
 }
 
 .editButton-info, .deleteButton-info {
-    color: black;
+    color: #ffffff;
     padding: 5px;
     border-radius: 15px;
     width: 100px;
@@ -201,4 +225,22 @@ border-bottom: 1px dashed #ec971f;
     background-color: #761c19;
     color: #ebebeb;
     cursor: pointer;
+}
+
+/*new Joke*/
+.jokeTag{
+    transition-duration: .5s;
+    background-color: #133d55;
+    color: #ffffff;
+    margin-left: 20px;
+    font-size: 15pt;
+    border: 3px inset #985f0d;
+}
+.jokeTag:hover{
+    border-color: #eea236;
+    cursor: pointer;
+}
+.jokeTag:focus{
+    border-color: #eea236;
+    outline: none;
 }

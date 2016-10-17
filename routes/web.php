@@ -50,6 +50,10 @@ Route::post('/changeState', 'HomeController@changeState');
 
 
 //ADMIN
+
+//adminSearch
+Route::post('/adminSearch', 'AdminController@adminSearch');
+
 //all jokes
 Route::get('/allJokes', 'AdminController@allJokes');
 
