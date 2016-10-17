@@ -148,7 +148,7 @@
                             $('#jokeTable').html('');
                             for (var i = 0; i < data.jokes.length; i++) {
                                 if (data.jokes[i].status == 1) {
-                                    $('#jokeTable').append('' +
+                                    $('#jokeTable').append(
                                             '<div class="jokeInfo" id="jokeInfo">' +
                                             '<div class="content">' + data.jokes[i].content +
                                             '</div>' +
@@ -161,7 +161,7 @@
                                             data.jokes[i].id +
                                             '">' +
                                             '<div class="infoButtonContainer">' +
-                                            '<div class="infoButton">' +
+                                            '<div class="infoButtonS">' +
                                             'Info' +
                                             '</div>' +
                                             '</div>' +
@@ -170,7 +170,7 @@
                                             '</div>'
                                     );
                                 } else {
-                                    $('#jokeTable').append('' +
+                                    $('#jokeTable').append(
                                             '<div class="jokeInfo" id="jokeInfo">' +
                                             '<div class="content">' + data.jokes[i].content +
                                             '</div>' +
@@ -183,7 +183,7 @@
                                             data.jokes[i].id +
                                             '">' +
                                             '<div class="infoButtonContainer">' +
-                                            '<div class="infoButton">' +
+                                            '<div class="infoButtonS">' +
                                             'Info' +
                                             '</div>' +
                                             "</div>" +
