@@ -153,7 +153,7 @@ a:hover {
     display: inline-block;
     background-color: #1f648b;
     text-align: center;
-    margin-left: 50px;
+    /*margin-left: 50px;*/
     height: 50px;
     width: 200px;
     border-radius: 10px;

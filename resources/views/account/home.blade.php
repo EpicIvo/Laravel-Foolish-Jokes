@@ -164,41 +164,69 @@
                             $('#jokeTable').html('');
                             for (var i = 0; i < data.jokes.length; i++) {
                                 if (data.jokes[i].status == 1) {
-                                    $('#jokeTable').append('<div class="jokeInfo" id="jokeInfo">' +
-                                            '<a href="/info/' + data.jokes[i].id + '">' +
-                                            '<div class="content">' + data.jokes[i].content +
-                                            '</a>' +
+                                    $('#jokeTable').append(
+                                            '<div class="jokeInfo" id="jokeInfo">' +
+
+                                            '<div class="content">' +
+                                            data.jokes[i].content +
                                             '</div>' +
+
                                             '<div class="stateSwitchButtonContainer">' +
+
                                             '<div class="stateSwitchButtonA" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
                                             'Active' +
                                             '</div>' +
+
                                             '</div>' +
+
+                                            '<a href="/info/' + data.jokes[i].id + '">' +
+
                                             '<div class="infoButtonContainer">' +
+
                                             '<div class="infoButton">' +
                                             'Info' +
                                             '</div>' +
+
                                             '</div>' +
+
+                                            '</a>' +
+
                                             '<div class="date">' + data.jokes[i].created_at +
+
+                                            '</div>' +
+
                                             '</div>'
                                     );
                                 } else {
-                                    $('#jokeTable').append('<div class="jokeInfo" id="jokeInfo">' +
-                                            '<a href="/info/' + data.jokes[i].id + '">' +
+                                    $('#jokeTable').append(
+                                            '<div class="jokeInfo" id="jokeInfo">' +
+
                                             '<div class="content">' + data.jokes[i].content +
-                                            '</a>' +
                                             '</div>' +
+
                                             '<div class="stateSwitchButtonContainer">' +
+
                                             '<div class="stateSwitchButtonU" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
                                             'Unactive' +
                                             '</div>' +
+
                                             '</div>' +
+
+                                            '<a href="/info/' + data.jokes[i].id + '">' +
+
                                             '<div class="infoButtonContainer">' +
+
                                             '<div class="infoButton">' +
                                             'Info' +
                                             '</div>' +
+
                                             "</div>" +
-                                            '<div class="date">' + data.jokes[i].created_at + '</div>'
+
+                                            '</a>' +
+
+                                            '<div class="date">' + data.jokes[i].created_at + '</div>' +
+
+                                            '</div>'
                                     );
                                 }
 
