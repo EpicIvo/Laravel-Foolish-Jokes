@@ -50,6 +50,7 @@ class HomeController extends Controller
 
         $joke->user_id = Input::get('userId');
         $joke->content = Input::get('jokeContent');
+        $joke->tag = Input::get('jokeTag');
         $joke->created_at = $time->toDateTimeString();
         $joke->save();
 

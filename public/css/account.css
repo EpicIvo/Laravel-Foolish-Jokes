@@ -101,14 +101,13 @@ a:hover {
     transition-duration: .5s;
     margin-top: 20px;
     border-radius: 5px;
-    border: 2px solid #761c19;
+    border: 3px inset #985f0d;
     background-color: #133d55;
     color: #f9f2f4;
 }
 
 .formSubmit:hover {
-    border: 2px solid #ec971f;
-    background-color: #2ca02c;
+    border: 3px inset #eea236;
 }
 
 .content {
@@ -226,4 +225,22 @@ a:hover {
     background-color: #761c19;
     color: #ebebeb;
     cursor: pointer;
+}
+
+/*new Joke*/
+.jokeTag{
+    transition-duration: .5s;
+    background-color: #133d55;
+    color: #ffffff;
+    margin-left: 20px;
+    font-size: 15pt;
+    border: 3px inset #985f0d;
+}
+.jokeTag:hover{
+    border-color: #eea236;
+    cursor: pointer;
+}
+.jokeTag:focus{
+    border-color: #eea236;
+    outline: none;
 }

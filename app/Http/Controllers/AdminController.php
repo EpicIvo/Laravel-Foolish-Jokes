@@ -44,7 +44,6 @@ class AdminController extends Controller
             $joke->save();
             return Redirect::action('AdminController@allJokes');
         } else {
-            echo "not working :'(" . $joke;
         }
     }
 

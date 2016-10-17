@@ -5,9 +5,7 @@
     <link href="{{ URL::asset('css/account.css') }}" rel="stylesheet">
 @endsection
 
-
 @section('content')
-
     <a href="{{ URL::to('home') }}">
         <div class="newJokeButton">
             My Jokes
