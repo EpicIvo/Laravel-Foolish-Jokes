@@ -149,15 +149,17 @@ a:hover {
     font-size: 25pt;
 }
 
-.infoButton{
+.infoButton, .infoButtonS{
     display: inline-block;
     background-color: #1f648b;
     text-align: center;
-    margin-left: 50px;
     height: 50px;
     width: 200px;
     border-radius: 10px;
-
+}
+.infoButtonS{
+    margin-left: 3px;
+    padding-left: 1px;
 }
 
 .date {
@@ -229,6 +231,7 @@ a:hover {
 
 /*new Joke*/
 .jokeTag{
+    height: 40px;
     transition-duration: .5s;
     background-color: #133d55;
     color: #ffffff;
