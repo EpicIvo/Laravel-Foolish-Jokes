@@ -39,7 +39,8 @@
 
                         <div class="search">
                             {!! Form::model($users[Auth::user()->id - 1]->jokes, ['url' => '/', 'method' => 'get', 'class' => 'searchForm']) !!}
-                            {{ Form::text('search', '', ['class' => 'searchFormInput', 'placeholder' => 'Search']) }}
+                            {{ Form::text('search', '', ['class' => 'searchFormInput', 'id' => 'textInput', 'placeholder' => 'Search']) }}
+                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance'], null, ['class' => 'jokeTag', 'id' => 'selectInput', 'placeholder' => 'Tag']) }}
                             {!! Form::close() !!}
                         </div>
 
@@ -146,8 +147,10 @@
 
         //      Search functionality
 
-        window.addEventListener('input', function (e) {
+        window.addEventListener('input', function () {
                     var userId = {!! json_encode($users[Auth::user()->id - 1]->id) !!};
+                    var textInput = document.getElementById('textInput');
+                    var selectInput = document.getElementById('selectInput');
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -155,9 +158,9 @@
                         type: "POST",
                         url: '/search',
                         dataType: 'JSON',
-                        data: {inputData: e.target.value, userId: userId},
+                        data: {textInput: textInput.value, selectInput: selectInput.value, userId: userId},
                         success: function (data) {
-                            console.log("ajax request succes" + data.userId);
+                            console.log("succes!" + data.selectInput);
                             $('#jokeTable').html('');
                             for (var i = 0; i < data.jokes.length; i++) {
                                 if (data.jokes[i].status == 1) {

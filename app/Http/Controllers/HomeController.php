@@ -119,12 +119,23 @@ class HomeController extends Controller
     public function search()
     {
         $data = Request::capture()->all();
-        $searchQuery = $data['inputData'];
+        $searchQuery = $data['textInput'];
         $userId = $data['userId'];
-        $jokes = DB::table('jokes')
-            ->where('jokes.content', 'like', '%' . $searchQuery . '%')
-            ->where('jokes.user_id', '=', $userId)
-            ->get();
+
+        $selectInput = $data['selectInput'];
+
+        if ($selectInput == '') {
+            $jokes = DB::table('jokes')
+                ->where('jokes.content', 'like', '%' . $searchQuery . '%')
+                ->where('jokes.user_id', '=', $userId)
+                ->get();
+        } else {
+            $jokes = DB::table('jokes')
+                ->where('jokes.content', 'like', '%' . $searchQuery . '%')
+                ->where('jokes.tag', '=', $selectInput)
+                ->where('jokes.user_id', '=', $userId)
+                ->get();
+        }
 
         $viewData = [
             'searchQuery' => $searchQuery,
