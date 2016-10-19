@@ -45,8 +45,6 @@ class WelcomeController extends Controller
     public function like()
     {
         $data = Request::capture()->all();
-//        echo $data['jokeId'];
-//        echo $data['userId'];
 
         $like = new jokeLike();
         $like->user_id = $data['userId'];

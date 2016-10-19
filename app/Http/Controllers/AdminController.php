@@ -15,7 +15,7 @@ class AdminController extends Controller
     //Index
     public function allJokes()
     {
-        $jokes = Joke::all();
+        $jokes = Joke::paginate(10);
         return view('account/admin/allJokes', compact('jokes'));
     }
 
@@ -75,6 +75,8 @@ class AdminController extends Controller
         $viewData = [
             'searchQuery' => $searchQuery,
             'jokes' => $jokes,
+            'searchInput' => $searchQuery,
+            'selectInput' => $selectInput
         ];
         return $viewData;
     }
