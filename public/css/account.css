@@ -12,7 +12,7 @@ a:hover {
 }
 
 .panel-heading {
-    height: 60px;
+    height: 65px;
 }
 
 .yourJokesTitle {
@@ -38,6 +38,7 @@ a:hover {
     background-color: #133d55;
     color: #ffffff;
     transition-duration: 0.5s;
+    line-height: 60px;
 }
 
 .searchFormInput:focus {
@@ -47,6 +48,31 @@ a:hover {
 
 .searchFormInput:hover {
     border-color: #eea236;
+}
+
+.tagLabel{
+    font-size: 20pt;
+    font-family: "Raleway", sans-serif;
+    margin-left: 10px;
+}
+
+.searchJokeTag{
+    line-height: 60px;
+    height: 40px;
+    transition-duration: .5s;
+    background-color: #133d55;
+    color: #ffffff;
+    margin-left: 10px;
+    font-size: 15pt;
+    border: 3px inset #985f0d;
+}
+.searchJokeTag:hover{
+    border-color: #eea236;
+    cursor: pointer;
+}
+.searchJokeTag:focus{
+    border-color: #eea236;
+    outline: none;
 }
 
 .jokeInfo {

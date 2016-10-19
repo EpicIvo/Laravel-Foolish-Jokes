@@ -23,9 +23,10 @@
                         </div>
 
                         <div class="search">
-                            {!! Form::model($jokes, ['url' => '/', 'method' => 'get', 'class' => 'searchForm']) !!}
+                            {!! Form::model($jokes, ['url' => '/', 'method' => 'get', 'class' => 'searchForm', 'type' => 'button']) !!}
                             {{ Form::text('search', '', ['class' => 'searchFormInput', 'id' => 'textInput', 'placeholder' => 'Search']) }}
-                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance'], null, ['class' => 'jokeTag', 'id' => 'selectInput', 'placeholder' => 'Tag']) }}
+                            {{ Form::label('jokeTag', 'Tag:', ['class' => 'tagLabel']) }}
+                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance'], null, ['class' => 'searchJokeTag', 'id' => 'selectInput', 'placeholder' => 'All']) }}
                             {!! Form::close() !!}
                         </div>
 
@@ -202,5 +203,17 @@
                     });
                 },
                 false);
+
+        // Prevent enter to submit form
+
+                window.addEventListener('keydown', function(e) {
+                    if (e.key == 'U+000A' || e.key == 'Enter' || e.keyCode == 13) {
+                        if (e.target.nodeName == 'INPUT' && e.target.type == 'text') {
+                            e.preventDefault();
+                            return false;
+                        }
+                    }
+                }, true);
+
     </script>
 @endsection
