@@ -23,9 +23,10 @@
                         </div>
 
                         <div class="search">
-                            {!! Form::model($jokes, ['url' => '/', 'method' => 'get', 'class' => 'searchForm']) !!}
+                            {!! Form::model($jokes, ['url' => '/', 'method' => 'get', 'class' => 'searchForm', 'type' => 'button']) !!}
                             {{ Form::text('search', '', ['class' => 'searchFormInput', 'id' => 'textInput', 'placeholder' => 'Search']) }}
-                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance'], null, ['class' => 'jokeTag', 'id' => 'selectInput', 'placeholder' => 'Tag']) }}
+                            {{ Form::label('jokeTag', 'Tag:', ['class' => 'tagLabel']) }}
+                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance'], null, ['class' => 'searchJokeTag', 'id' => 'selectInput', 'placeholder' => 'All']) }}
                             {!! Form::close() !!}
                         </div>
 
@@ -36,7 +37,7 @@
                             @for($i = 0; $i < count($jokes); $i++)
                                 <div class="jokeInfo" id="jokeInfo">
                                     <div class="content">
-                                        {{ $jokes[$i]->content }}
+                                        {{ substr($jokes[$i]->content, 0, 110) }}{{ strlen($jokes[$i]->content) > 110 ? "..." : "" }}
                                     </div>
                                     <div class="stateSwitchButtonContainer">
                                         @if($jokes[$i]->status == 1)
@@ -61,6 +62,9 @@
                                     </div>
                                 </div>
                             @endfor
+                        </div>
+                        <div class="links" id="links">
+                            {{ $jokes->links() }}
                         </div>
                     </div>
                 </div>
@@ -134,7 +138,6 @@
         window.addEventListener('input', function () {
                     var textInput = document.getElementById('textInput');
                     var selectInput = document.getElementById('selectInput');
-                    console.log("ajax request succes" + textInput.value);
                     $.ajax({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -144,63 +147,127 @@
                         dataType: 'JSON',
                         data: {textInput: textInput.value, selectInput: selectInput.value},
                         success: function (data) {
-                            console.log("ajax request succes" + data.textInput);
-                            $('#jokeTable').html('');
-                            for (var i = 0; i < data.jokes.length; i++) {
-                                if (data.jokes[i].status == 1) {
-                                    $('#jokeTable').append(
-                                            '<div class="jokeInfo" id="jokeInfo">' +
-                                            '<div class="content">' + data.jokes[i].content +
-                                            '</div>' +
-                                            '<div class="stateSwitchButtonContainer">' +
-                                            '<div class="stateSwitchButtonA" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
-                                            'Active' +
-                                            '</div>' +
-                                            '</div>' +
-                                            '<a href="/info/' +
-                                            data.jokes[i].id +
-                                            '">' +
-                                            '<div class="infoButtonContainer">' +
-                                            '<div class="infoButtonS">' +
-                                            'Info' +
-                                            '</div>' +
-                                            '</div>' +
-                                            '</a>' +
-                                            '<div class="date">' + data.jokes[i].created_at +
-                                            '</div>'
-                                    );
-                                } else {
-                                    $('#jokeTable').append(
-                                            '<div class="jokeInfo" id="jokeInfo">' +
-                                            '<div class="content">' + data.jokes[i].content +
-                                            '</div>' +
-                                            '<div class="stateSwitchButtonContainer">' +
-                                            '<div class="stateSwitchButtonU" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
-                                            'Unactive' +
-                                            '</div>' +
-                                            '</div>' +
-                                            '<a href="/info/' +
-                                            data.jokes[i].id +
-                                            '">' +
-                                            '<div class="infoButtonContainer">' +
-                                            '<div class="infoButtonS">' +
-                                            'Info' +
-                                            '</div>' +
-                                            "</div>" +
-                                            '</a>' +
-                                            '<div class="date">' + data.jokes[i].created_at + '</div>'
-                                    );
-                                }
+                            if (data.searchQuery === "" && data.selectInput === "") {
+                                document.getElementById('links').style.display = "block";
+                            } else {
+                                document.getElementById('links').style.display = "none";
+                                console.log(data);
+                                $('#jokeTable').html('');
+                                for (var i = 0; i < data.jokes.length; i++) {
+                                    if (data.jokes[i].content.length > 110) {
+                                        if (data.jokes[i].status == 1) {
+                                            $('#jokeTable').append(
+                                                    '<div class="jokeInfo" id="jokeInfo">' +
+                                                    '<div class="content">' + data.jokes[i].content.substr(0, 110) + "..." +
+                                                    '</div>' +
+                                                    '<div class="stateSwitchButtonContainer">' +
+                                                    '<div class="stateSwitchButtonA" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
+                                                    'Active' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                    '<a href="/info/' +
+                                                    data.jokes[i].id +
+                                                    '">' +
+                                                    '<div class="infoButtonContainer">' +
+                                                    '<div class="infoButtonS">' +
+                                                    'Info' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                    '</a>' +
+                                                    '<div class="date">' + data.jokes[i].created_at +
+                                                    '</div>'
+                                            );
+                                        } else {
+                                            $('#jokeTable').append(
+                                                    '<div class="jokeInfo" id="jokeInfo">' +
+                                                    '<div class="content">' + data.jokes[i].content.substr(0, 110) + "..." +
+                                                    '</div>' +
+                                                    '<div class="stateSwitchButtonContainer">' +
+                                                    '<div class="stateSwitchButtonU" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
+                                                    'Unactive' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                    '<a href="/info/' +
+                                                    data.jokes[i].id +
+                                                    '">' +
+                                                    '<div class="infoButtonContainer">' +
+                                                    '<div class="infoButtonS">' +
+                                                    'Info' +
+                                                    '</div>' +
+                                                    "</div>" +
+                                                    '</a>' +
+                                                    '<div class="date">' + data.jokes[i].created_at + '</div>'
+                                            );
+                                        }
+                                    }else {
+                                        if (data.jokes[i].status == 1) {
+                                            $('#jokeTable').append(
+                                                    '<div class="jokeInfo" id="jokeInfo">' +
+                                                    '<div class="content">' + data.jokes[i].content +
+                                                    '</div>' +
+                                                    '<div class="stateSwitchButtonContainer">' +
+                                                    '<div class="stateSwitchButtonA" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
+                                                    'Active' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                    '<a href="/info/' +
+                                                    data.jokes[i].id +
+                                                    '">' +
+                                                    '<div class="infoButtonContainer">' +
+                                                    '<div class="infoButtonS">' +
+                                                    'Info' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                    '</a>' +
+                                                    '<div class="date">' + data.jokes[i].created_at +
+                                                    '</div>'
+                                            );
+                                        } else {
+                                            $('#jokeTable').append(
+                                                    '<div class="jokeInfo" id="jokeInfo">' +
+                                                    '<div class="content">' + data.jokes[i].content +
+                                                    '</div>' +
+                                                    '<div class="stateSwitchButtonContainer">' +
+                                                    '<div class="stateSwitchButtonU" id="stateSwitchButton' + i + '" title="' + data.jokes[i].id + '">' +
+                                                    'Unactive' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                    '<a href="/info/' +
+                                                    data.jokes[i].id +
+                                                    '">' +
+                                                    '<div class="infoButtonContainer">' +
+                                                    '<div class="infoButtonS">' +
+                                                    'Info' +
+                                                    '</div>' +
+                                                    "</div>" +
+                                                    '</a>' +
+                                                    '<div class="date">' + data.jokes[i].created_at + '</div>'
+                                            );
+                                        }
 
-                                var stateSwitchButton = document.getElementById('stateSwitchButton' + i);
-                                stateSwitchButton.addEventListener('click', function changeState(e) {
-                                    ajaxRequest(e.target.title);
-                                    changeDiv(e.target.id, e.target.title, e.target.className);
-                                });
+                                        var stateSwitchButton = document.getElementById('stateSwitchButton' + i);
+                                        stateSwitchButton.addEventListener('click', function changeState(e) {
+                                            ajaxRequest(e.target.title);
+                                            changeDiv(e.target.id, e.target.title, e.target.className);
+                                        });
+                                    }
+                                }
                             }
                         }
                     });
                 },
                 false);
+
+        // Prevent enter to submit form
+
+        window.addEventListener('keydown', function (e) {
+            if (e.key == 'U+000A' || e.key == 'Enter' || e.keyCode == 13) {
+                if (e.target.nodeName == 'INPUT' && e.target.type == 'text') {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        }, true);
+
     </script>
 @endsection
