@@ -13,9 +13,13 @@
             <div id='container' class="container">
 
                 <div id='title' class="title">
-                    <div class="titleText">
-                        Foolish Jokes
-                        <div class='betaText'><i>Development phase</i></div>
+                    <a href="{{'/'}}">
+                        <div class="homeLink">
+                            <
+                        </div>
+                    </a>
+                    <div class="likedJokesTitleText">
+                        {{ $welcomeData['users'][$welcomeData['userId']-1]->name . "'" }}{{ substr($welcomeData['users'][$welcomeData['userId']-1]->name, -1) == 's' ? "" : 's' }} liked Jokes
                     </div>
                 </div>
 

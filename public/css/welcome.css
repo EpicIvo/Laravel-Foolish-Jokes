@@ -50,6 +50,21 @@ body, html{
     font-size: 60pt;
 }
 
+.likedJokesTitleText{
+    text-align: center;
+    font-family: "Myanmar MN", Avenir, sans-serif;
+    font-size: 50pt;
+}
+
+.homeLink{
+    position: absolute;
+    line-height: 80px;
+    margin-left: 10px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 60pt;
+    color: #133d55;
+}
+
 .betaText{
     font-family: Avenir, sans-serif;
     font-size: 20pt;
