@@ -14,7 +14,6 @@ use App\Joke;
 //Auth
 Auth::routes();
 
-
 //Index
 Route::get('/', 'WelcomeController@index');
 
