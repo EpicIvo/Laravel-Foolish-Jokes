@@ -40,6 +40,7 @@ class AdminController extends Controller
 
         if ($joke) {
             $joke->content = Input::get('jokeContent');
+            $joke->tag = Input::get('jokeTag');
             $joke->updated_at = $time->toDateTimeString();
             $joke->save();
             return Redirect::action('AdminController@allJokes');
