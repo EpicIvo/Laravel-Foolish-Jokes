@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="icon" href="{{ URL::asset('images/FJLOGO.png') }}">
 @yield('moreCss')
 <!-- Scripts -->
     <script>

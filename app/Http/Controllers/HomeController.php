@@ -7,6 +7,7 @@ use Redirect;
 use Carbon\Carbon;
 use App\User;
 use App\Joke;
+use App\jokeLike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -36,10 +37,22 @@ class HomeController extends Controller
     }
 
     //New Joke
-    public function newJoke()
+    public function newJoke($userId)
     {
         $joke = Joke::all();
-        return view('account/new', compact('joke'));
+        $jokeLike = jokeLike::all()->where('user_id', '=', $userId);
+        $fiveLikes = false;
+
+        if (count($jokeLike) > 5) {
+            $fiveLikes = true;
+        }
+        $newJokeViewData = [
+            'joke' => $joke,
+            'jokeLike' => $jokeLike,
+            'fiveLikes' => $fiveLikes
+        ];
+
+        return view('account/new', compact('newJokeViewData'));
     }
 
     public function create()
@@ -79,6 +92,7 @@ class HomeController extends Controller
 
         if ($joke) {
             $joke->content = Input::get('jokeContent');
+
             $joke->updated_at = $time->toDateTimeString();
             $joke->save();
             return Redirect::action('HomeController@index');

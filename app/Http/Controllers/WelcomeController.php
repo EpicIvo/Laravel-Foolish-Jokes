@@ -36,9 +36,10 @@ class WelcomeController extends Controller
         $welcomeData = [
             'jokes' => $jokes,
             'users' => User::all(),
+            'userId' => $userId,
             'jokeLikes' => jokeLike::all()
         ];
-        return view('welcome', compact('welcomeData'));
+        return view('likedJokes', compact('welcomeData'));
     }
 
     //Like

@@ -14,7 +14,6 @@ use App\Joke;
 //Auth
 Auth::routes();
 
-
 //Index
 Route::get('/', 'WelcomeController@index');
 
@@ -35,7 +34,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/info/{jokePlace}', 'HomeController@jokeInfo');
 
 //New
-Route::get('/new', 'HomeController@newJoke');
+Route::get('/new/{userId}', 'HomeController@newJoke');
 Route::post('/create', 'HomeController@create');
 
 //Edit
