@@ -34,7 +34,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/info/{jokePlace}', 'HomeController@jokeInfo');
 
 //New
-Route::get('/new', 'HomeController@newJoke');
+Route::get('/new/{userId}', 'HomeController@newJoke');
 Route::post('/create', 'HomeController@create');
 
 //Edit

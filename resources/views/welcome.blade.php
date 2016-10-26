@@ -3,7 +3,6 @@
 
     <title>Foolish Jokes</title>
     <link href="{{ URL::asset('css/welcome.css') }}" rel="stylesheet" type="text/css">
-    <link rel="icon" href="{{ URL::asset('images/FJLOGO.png') }}">
 
 @stop
 @section('content')

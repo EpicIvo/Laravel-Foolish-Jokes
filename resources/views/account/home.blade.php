@@ -20,7 +20,7 @@
                 </div>
             </a>
         @else
-            <a href="{{ URL::to('new') }}">
+            <a href="{{'/new/'.Auth::user()->id}}">
                 <div class="newJokeButton">
                     New Joke
                 </div>
