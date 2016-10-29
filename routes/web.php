@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +65,9 @@ Route::get('/adminEditPage/{jokeId}', 'AdminController@adminEditPage');
 Route::put('/adminEdit/{jokeId}', 'AdminController@adminEdit');
 
 Route::get('/adminDelete/{jokeId}', 'AdminController@adminDeleteJoke');
+
+//users list
+Route::get('/usersList', 'AdminController@usersList');
+
+//changeUser
+Route::post('/changeRole', 'AdminController@changeRole');

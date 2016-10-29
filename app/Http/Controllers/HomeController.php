@@ -43,7 +43,7 @@ class HomeController extends Controller
         $jokeLike = jokeLike::all()->where('user_id', '=', $userId);
         $fiveLikes = false;
 
-        if (count($jokeLike) > 5) {
+        if (count($jokeLike) > 4) {
             $fiveLikes = true;
         }
         $newJokeViewData = [
@@ -57,7 +57,6 @@ class HomeController extends Controller
 
     public function create()
     {
-
         $time = Carbon::now();
         $joke = new Joke;
 

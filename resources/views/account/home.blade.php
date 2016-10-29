@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
     <div class="newJokeButtonContainer">
         @if(Auth::user()->role == 'admin')
             <a href="{{ URL::to('allJokes') }}">
@@ -14,7 +13,7 @@
                 </div>
             </a>
 
-            <a href="{{ URL::to('new') }}">
+            <a href="{{'/new/'.Auth::user()->id}}">
                 <div class="adminNewJokeButton">
                     New Joke
                 </div>

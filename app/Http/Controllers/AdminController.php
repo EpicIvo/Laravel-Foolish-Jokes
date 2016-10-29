@@ -81,4 +81,24 @@ class AdminController extends Controller
         ];
         return $viewData;
     }
+
+    public function usersList()
+    {
+        $users = User::all();
+        return view('account/admin/usersList', compact('users'));
+    }
+
+    public function changeRole()
+    {
+        $data = Request::capture()->all();
+
+            if ($data['currentRole'] == 'admin') {
+                DB::table('users')->select('role')->where('id', '=', $data['userId'])->update(['role' => 'user']);
+            } else {
+                DB::table('users')->select('role')->where('id', '=', $data['userId'])->update(['role' => 'admin']);
+            }
+            return Redirect::action('AdminController@usersList');
+
+    }
+
 }
