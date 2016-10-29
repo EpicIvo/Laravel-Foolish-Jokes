@@ -49,7 +49,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
 
-                            In order to upload your own jokes, you have to like 5 jokes first!
+                            In order to upload your own jokes, you have to like {{ 5 - count($newJokeViewData['jokeLike']) }} more jokes first!
 
                         </div>
 

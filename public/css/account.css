@@ -273,3 +273,33 @@ a:hover {
     border-color: #eea236;
     outline: none;
 }
+/* ADMIN UsersList*/
+
+.users{
+    width: 100%;
+}
+.user{
+    font-size: 20pt;
+    border-bottom: 2px dashed #eea236;
+}
+.currentUser{
+    font-size: 20pt;
+    border-bottom: 2px dashed #eea236;
+    background-color: #f4f4f4;
+}
+.userName{
+    width: 40%;
+}
+.userEmail{
+    width: 40%;
+}
+.userRole{
+    width: 10%;
+}
+.userRole:hover{
+    cursor: pointer;
+    color: #000000;
+}
+.currentUserRole{
+    width: 10%;
+}
