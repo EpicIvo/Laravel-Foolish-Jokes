@@ -26,7 +26,7 @@
                         {{ Form::textarea('jokeContent', $joke->content, ['class' => 'form-control', 'required'] ) }}
 
                         {{ Form::label('jokeTag', 'Tag:') }}<br>
-                        {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance'], $joke->tag, ['class' => 'jokeTag', 'placeholder' => 'select', 'required']) }}
+                        {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance', 'Animal' => 'Animal', 'Money' => 'Money', 'Miscellaneous' => 'Miscellaneous'], null, ['class' => 'jokeTag', 'placeholder' => 'select', 'required']) }}
                         <br>
 
                         {{ Form::hidden('userId', $joke->user_id) }}
