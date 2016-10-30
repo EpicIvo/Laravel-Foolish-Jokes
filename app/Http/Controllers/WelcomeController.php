@@ -17,6 +17,7 @@ class WelcomeController extends Controller
     {
         $jokes = DB::table('jokes')
             ->where('jokes.status', '=', 1)
+            ->orderBy('id', 'DESC')
             ->get();
         $welcomeData = [
             'jokes' => $jokes,

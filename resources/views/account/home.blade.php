@@ -40,7 +40,7 @@
                             {!! Form::model($users[Auth::user()->id - 1]->jokes, ['url' => '/', 'method' => 'get', 'class' => 'searchForm']) !!}
                             {{ Form::text('search', '', ['class' => 'searchFormInput', 'id' => 'textInput', 'placeholder' => 'Search']) }}
                             {{ Form::label('jokeTag', 'Tag:', ['class' => 'tagLabel']) }}
-                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance'], null, ['class' => 'searchJokeTag', 'id' => 'selectInput', 'placeholder' => 'All']) }}
+                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance', 'Animal' => 'Animal', 'Money' => 'Money', 'Miscellaneous' => 'Miscellaneous'], null, ['class' => 'searchJokeTag', 'id' => 'selectInput', 'placeholder' => 'All']) }}
                             {!! Form::close() !!}
                         </div>
 

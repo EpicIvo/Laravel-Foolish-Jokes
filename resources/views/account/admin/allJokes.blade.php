@@ -26,7 +26,7 @@
                             {!! Form::model($jokes, ['url' => '/', 'method' => 'get', 'class' => 'searchForm', 'type' => 'button']) !!}
                             {{ Form::text('search', '', ['class' => 'searchFormInput', 'id' => 'textInput', 'placeholder' => 'Search']) }}
                             {{ Form::label('jokeTag', 'Tag:', ['class' => 'tagLabel']) }}
-                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance'], null, ['class' => 'searchJokeTag', 'id' => 'selectInput', 'placeholder' => 'All']) }}
+                            {{ Form::select('jokeTag', ['Bar' => 'Bar', 'Appearance' => 'Apearance', 'Animal' => 'Animal', 'Money' => 'Money', 'Miscellaneous' => 'Miscellaneous'], null, ['class' => 'searchJokeTag', 'id' => 'selectInput', 'placeholder' => 'All']) }}
                             {!! Form::close() !!}
                         </div>
 
